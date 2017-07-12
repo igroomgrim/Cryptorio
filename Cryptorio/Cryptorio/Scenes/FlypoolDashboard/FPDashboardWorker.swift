@@ -52,7 +52,7 @@ class FPDashboardWorker {
             }
             return
           }
-          print(fpData)
+
           let result = FPResult.Success(result: fpData)
           DispatchQueue.main.async {
             completion(result)

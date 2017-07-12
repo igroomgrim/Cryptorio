@@ -17,6 +17,7 @@
 		146BB2251F14C6290010D13C /* JSONSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146BB2241F14C6290010D13C /* JSONSerializer.swift */; };
 		146BB2291F1507B80010D13C /* WalletIDStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146BB2281F1507B80010D13C /* WalletIDStore.swift */; };
 		146BB22B1F150F8F0010D13C /* Wallet.plist in Resources */ = {isa = PBXBuildFile; fileRef = 146BB22A1F150F8F0010D13C /* Wallet.plist */; };
+		981383201F16074F00725EE2 /* DateConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9813831F1F16074F00725EE2 /* DateConverter.swift */; };
 		981D02341F0DF3990016C2BC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981D02331F0DF3990016C2BC /* AppDelegate.swift */; };
 		981D02361F0DF3990016C2BC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981D02351F0DF3990016C2BC /* ViewController.swift */; };
 		981D02391F0DF3990016C2BC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 981D02371F0DF3990016C2BC /* Main.storyboard */; };
@@ -46,6 +47,7 @@
 		146BB2241F14C6290010D13C /* JSONSerializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JSONSerializer.swift; path = Services/JSONSerializer.swift; sourceTree = "<group>"; };
 		146BB2281F1507B80010D13C /* WalletIDStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WalletIDStore.swift; path = Services/WalletIDStore.swift; sourceTree = "<group>"; };
 		146BB22A1F150F8F0010D13C /* Wallet.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Wallet.plist; sourceTree = "<group>"; };
+		9813831F1F16074F00725EE2 /* DateConverter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DateConverter.swift; path = Services/DateConverter.swift; sourceTree = "<group>"; };
 		981D02301F0DF3990016C2BC /* Cryptorio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cryptorio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		981D02331F0DF3990016C2BC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		981D02351F0DF3990016C2BC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 			children = (
 				146BB2241F14C6290010D13C /* JSONSerializer.swift */,
 				146BB2281F1507B80010D13C /* WalletIDStore.swift */,
+				9813831F1F16074F00725EE2 /* DateConverter.swift */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -304,6 +307,7 @@
 				146BB2291F1507B80010D13C /* WalletIDStore.swift in Sources */,
 				146BB2251F14C6290010D13C /* JSONSerializer.swift in Sources */,
 				146BB21D1F14AF530010D13C /* FPDashboardRouter.swift in Sources */,
+				981383201F16074F00725EE2 /* DateConverter.swift in Sources */,
 				146BB21C1F14AF530010D13C /* FPDashboardPresenter.swift in Sources */,
 				981D02341F0DF3990016C2BC /* AppDelegate.swift in Sources */,
 				146BB2221F14AFEB0010D13C /* FPData.swift in Sources */,
