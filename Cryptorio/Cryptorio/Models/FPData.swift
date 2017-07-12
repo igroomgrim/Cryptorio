@@ -17,13 +17,9 @@ struct FPData: Decodable {
   let btcPerMin: Double
   let avgHashrate: Double
   let unpaid: Double
-  
-  /*
-  let workers: [FPWorker]
-   */
-  
   let rounds: [FPRound]?
   let payouts: [FPPayout]?
+  let workers: [FPWorker]?
   
   init?(json: JSON) {
     guard let address = json["address"] as? String,
@@ -54,6 +50,12 @@ struct FPData: Decodable {
       self.payouts = payouts
     } else {
       self.payouts = nil
+    }
+    
+    self.workers = (json["workers"] as? [String: JSON]).map { (wks) -> [FPWorker] in
+      return wks.flatMap({ (wk) -> FPWorker? in
+        return FPWorker(json: wk.value)
+      })
     }
   }
 }
@@ -89,7 +91,33 @@ struct FPPayout {
 }
 
 struct FPWorker {
-  let worker: [String: Any]
+  let workerName: String
+  let hashRate: String
+  let validShares: Int
+  let invalidShares: Int
+  let workerLastSubmitTime: Int
+  let staleShares: Int
+  let invalidShareRatio: Double
+  
+  init?(json: JSON) {
+    guard let workerName = json["worker"] as? String,
+      let hashRate = json["hashrate"] as? String,
+      let validShares = json["validShares"] as? Int,
+      let invalidShares = json["invalidShares"] as? Int,
+      let workerLastSubmitTime = json["workerLastSubmitTime"] as? Int,
+      let staleShares = json["staleShares"] as? Int,
+      let invalidShareRatio = json["invalidShareRatio"] as? Double else {
+        return nil
+    }
+    
+    self.workerName = workerName
+    self.hashRate = hashRate
+    self.validShares = validShares
+    self.invalidShares = invalidShares
+    self.workerLastSubmitTime = workerLastSubmitTime
+    self.staleShares = staleShares
+    self.invalidShareRatio = invalidShareRatio
+  }
 }
 
 struct FPRound {
