@@ -37,8 +37,6 @@ class FPDashboardInteractor: FPDashboardBusinessLogic, FPDashboardDataStore {
       
       switch result {
         case .Success(let fpData):
-          print(fpData.address)
-          print(fpData.hashRate)
           let response = FPDashboard.RequestData.Response(flypoolData: fpData)
           self?.presenter?.presentDashboardData(response: response)
           

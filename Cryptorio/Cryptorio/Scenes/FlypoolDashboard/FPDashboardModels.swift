@@ -28,13 +28,25 @@ enum FPDashboard {
         let address: String
         let hashRate: String
         let avgHashRate: String
-        let unpaidBalance: Double
+        let unpaidBalance: String
+        let immatureBalance: String
         
         init(responseData: FPData) {
           self.address = responseData.address
           self.hashRate = responseData.hashRate
           self.avgHashRate = String(format: "%.2f", responseData.avgHashrate)
-          self.unpaidBalance = responseData.unpaid
+          self.unpaidBalance = String(format: "%.5f ZEC", responseData.unpaid)
+          
+          guard let rounds = responseData.rounds else {
+            self.immatureBalance = "0.0 ZEC"
+            return
+          }
+          
+          let immatureBalance = rounds.filter({ $0.processed == -1 }).reduce(0, { (result, round) -> Double in
+            return result + round.amount
+          })/100_000_000
+          
+          self.immatureBalance = String(format: "%.5f ZEC", immatureBalance)
         }
       }
       

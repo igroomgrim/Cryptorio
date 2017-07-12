@@ -27,6 +27,7 @@ class FPDashboardViewController: UITableViewController, FPDashboardDisplayLogic 
   @IBOutlet weak var hashRateLabel: UILabel!
   @IBOutlet weak var avgHashRateLabel: UILabel!
   @IBOutlet weak var unpaidBalanceLabel: UILabel!
+  @IBOutlet weak var immatureBalanceLabel: UILabel!
   
   @IBOutlet weak var addAddressBarButton: UIBarButtonItem!
   
@@ -91,7 +92,9 @@ class FPDashboardViewController: UITableViewController, FPDashboardDisplayLogic 
     addressLabel.text = displayedDashboardData.address
     hashRateLabel.text = "\(displayedDashboardData.hashRate)"
     avgHashRateLabel.text = "\(displayedDashboardData.avgHashRate) kH/s"
-    unpaidBalanceLabel.text = String(format: "%.5f ZEC", displayedDashboardData.unpaidBalance)
+    unpaidBalanceLabel.text = displayedDashboardData.unpaidBalance
+    immatureBalanceLabel.text = displayedDashboardData.immatureBalance
+    
     fpRefreshControl.endRefreshing()
   }
   

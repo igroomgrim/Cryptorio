@@ -74,7 +74,7 @@
                                         <rect key="frame" x="0.0" y="80" width="375" height="81"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="XtL-Lk-lEX" id="PiO-Ky-hNq">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="80.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="81"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.0 ZEC" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.29999999999999999" translatesAutoresizingMaskIntoConstraints="NO" id="G5L-32-aSl">
@@ -99,11 +99,40 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="81" id="flT-RQ-CQo">
+                                        <rect key="frame" x="0.0" y="161" width="375" height="81"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="flT-RQ-CQo" id="7Yh-6E-vNF">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="81"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.0 ZEC" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.30000001192092896" translatesAutoresizingMaskIntoConstraints="NO" id="plG-EO-6hw">
+                                                    <rect key="frame" x="8" y="8" width="359" height="43"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="36"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Immature Balance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uVl-en-gnR">
+                                                    <rect key="frame" x="139" y="56" width="97.5" height="14"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="plG-EO-6hw" firstAttribute="trailing" secondItem="7Yh-6E-vNF" secondAttribute="trailingMargin" id="Asn-uN-jaW"/>
+                                                <constraint firstItem="uVl-en-gnR" firstAttribute="centerX" secondItem="7Yh-6E-vNF" secondAttribute="centerX" id="LDf-3E-Mk6"/>
+                                                <constraint firstItem="plG-EO-6hw" firstAttribute="top" secondItem="7Yh-6E-vNF" secondAttribute="topMargin" id="YFq-CO-npI"/>
+                                                <constraint firstItem="uVl-en-gnR" firstAttribute="top" secondItem="plG-EO-6hw" secondAttribute="bottom" constant="5" id="ZKJ-k8-cCT"/>
+                                                <constraint firstItem="plG-EO-6hw" firstAttribute="leading" secondItem="7Yh-6E-vNF" secondAttribute="leadingMargin" id="pQO-w3-eO6"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="84" id="ZTK-GT-WtU">
-                                        <rect key="frame" x="0.0" y="161" width="375" height="84"/>
+                                        <rect key="frame" x="0.0" y="242" width="375" height="84"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ZTK-GT-WtU" id="Q9i-tH-tKd">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="83.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="84"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="chC-a1-q7K">
@@ -183,6 +212,7 @@
                         <outlet property="avgHashRateLabel" destination="puy-4T-nbY" id="hni-Sw-3TS"/>
                         <outlet property="fpRefreshControl" destination="db8-K9-KXo" id="0sw-xp-NPp"/>
                         <outlet property="hashRateLabel" destination="nED-25-IKr" id="qzH-aw-ylh"/>
+                        <outlet property="immatureBalanceLabel" destination="plG-EO-6hw" id="vf1-3f-yuJ"/>
                         <outlet property="unpaidBalanceLabel" destination="G5L-32-aSl" id="Gc7-Nf-CO6"/>
                     </connections>
                 </tableViewController>
