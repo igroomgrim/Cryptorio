@@ -43,7 +43,8 @@ class FPDashboardInteractor: FPDashboardBusinessLogic, FPDashboardDataStore {
           self?.presenter?.presentDashboardData(response: response)
           
         case .Failure(let error):
-          print(error)
+          let errorResponse = FPDashboard.ErrorData.Response(error: error)
+          self?.presenter?.presentDashboardErrorMessage(errorResponse: errorResponse)
       }
     })
   }

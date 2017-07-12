@@ -34,7 +34,12 @@ class FPDashboardWorker {
         defer { self.dataTask = nil }
         
         if let error = error {
-          print("DataTask error: " + error.localizedDescription + "\n")
+          let fpError = FPError.CannotFetch(error.localizedDescription)
+          let errorResult = FPResult<FPData>.Failure(error: fpError)
+          DispatchQueue.main.async {
+            completion(errorResult)
+          }
+          
         } else if let data = data,
           let response = response as? HTTPURLResponse,
           response.statusCode == 200 {
@@ -47,7 +52,7 @@ class FPDashboardWorker {
             }
             return
           }
-          
+          print(fpData)
           let result = FPResult.Success(result: fpData)
           DispatchQueue.main.async {
             completion(result)

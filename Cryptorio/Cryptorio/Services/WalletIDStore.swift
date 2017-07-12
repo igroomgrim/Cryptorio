@@ -25,20 +25,17 @@ class WalletIDStore {
   private func getWalletDic() -> NSMutableDictionary? {
     let path = getPath()
     let fileManager = FileManager.default
+    
     if(!fileManager.fileExists(atPath: path)){
       if let bundlePath = Bundle.main.path(forResource: "Wallet", ofType: "plist") {
         do{
           try fileManager.copyItem(atPath: bundlePath, toPath: path)
         }catch{
-          print("copy failure.")
           return nil
         }
       }else{
-        print("Wallet.plist not found.")
         return nil
       }
-    }else{
-      print("Wallet.plist already exits at path.")
     }
     
     let resultDictionary = NSMutableDictionary(contentsOfFile: path)

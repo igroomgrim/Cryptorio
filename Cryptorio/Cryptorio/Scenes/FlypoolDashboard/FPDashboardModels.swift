@@ -29,11 +29,23 @@ enum FPDashboard {
         let hashRate: String
       }
       
+      var displayedDashboardData: DashboardData
+    }
+  }
+  
+  enum ErrorData {
+    struct Request {
+    }
+    
+    struct Response {
+      let error: FPError
+    }
+    
+    struct ViewModel {
       struct DashboardError {
         let error: FPError
       }
       
-      var displayedDashboardData: DashboardData
       var displayedDashboardError: DashboardError
     }
   }

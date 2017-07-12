@@ -14,7 +14,7 @@ import UIKit
 
 protocol FPDashboardDisplayLogic: class {
   func displayDashboardData(viewModel: FPDashboard.RequestData.ViewModel)
-  func displayDashboardError(viewModel: FPDashboard.RequestData.ViewModel)
+  func displayDashboardError(viewModel: FPDashboard.ErrorData.ViewModel)
   func displayDashboardAddWalletNotification()
 }
 
@@ -92,18 +92,27 @@ class FPDashboardViewController: UITableViewController, FPDashboardDisplayLogic 
     fpRefreshControl.endRefreshing()
   }
   
-  func displayDashboardError(viewModel: FPDashboard.RequestData.ViewModel) {
-    // Display error
+  func displayDashboardError(viewModel: FPDashboard.ErrorData.ViewModel) {
     fpRefreshControl.endRefreshing()
+    let error = viewModel.displayedDashboardError.error
+    var errorMessageOnDisplay = ""
+    switch error {
+    case .CannotFetch(let errorMessage):
+      errorMessageOnDisplay = errorMessage
+    }
+    
+    let alert = UIAlertController(title: "System error", message: errorMessageOnDisplay, preferredStyle: .alert)
+    alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
+    self.present(alert, animated: true, completion: nil)
   }
   
   func displayDashboardAddWalletNotification() {
     let walletIDStore = WalletIDStore()
     
-    let alert = UIAlertController(title: "Add WalletID", message: "", preferredStyle: .alert)
+    let alert = UIAlertController(title: "Add Flypool(Zec) WalletID", message: "", preferredStyle: .alert)
     alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
     
-    alert.addTextField { (configurationTextField) in }
+    alert.addTextField(configurationHandler: nil)
     
     alert.addAction(UIAlertAction(title: "Save", style: .default, handler:{ [weak self] UIAlertAction in
       guard let textField = alert.textFields?.first, let walletID = textField.text else {

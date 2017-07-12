@@ -15,6 +15,7 @@ import UIKit
 protocol FPDashboardPresentationLogic {
   func presentDashboardData(response: FPDashboard.RequestData.Response)
   func presentDashboardAddWalletNotification()
+  func presentDashboardErrorMessage(errorResponse: FPDashboard.ErrorData.Response)
 }
 
 class FPDashboardPresenter: FPDashboardPresentationLogic {
@@ -32,5 +33,13 @@ class FPDashboardPresenter: FPDashboardPresentationLogic {
   
   func presentDashboardAddWalletNotification() {
     viewController?.displayDashboardAddWalletNotification()
+  }
+  
+  func presentDashboardErrorMessage(errorResponse: FPDashboard.ErrorData.Response) {
+    let errorData = FPDashboard.ErrorData.ViewModel.DashboardError(error: errorResponse.error)
+    
+    let viewModel = FPDashboard.ErrorData.ViewModel(displayedDashboardError: errorData)
+    
+    viewController?.displayDashboardError(viewModel: viewModel)
   }
 }
