@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		146BB21A1F14AF530010D13C /* FPDashboardInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146BB2141F14AF530010D13C /* FPDashboardInteractor.swift */; };
+		146BB21B1F14AF530010D13C /* FPDashboardModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146BB2151F14AF530010D13C /* FPDashboardModels.swift */; };
+		146BB21C1F14AF530010D13C /* FPDashboardPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146BB2161F14AF530010D13C /* FPDashboardPresenter.swift */; };
+		146BB21D1F14AF530010D13C /* FPDashboardRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146BB2171F14AF530010D13C /* FPDashboardRouter.swift */; };
+		146BB21E1F14AF530010D13C /* FPDashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146BB2181F14AF530010D13C /* FPDashboardViewController.swift */; };
+		146BB21F1F14AF530010D13C /* FPDashboardWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146BB2191F14AF530010D13C /* FPDashboardWorker.swift */; };
+		146BB2221F14AFEB0010D13C /* FPData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146BB2211F14AFEB0010D13C /* FPData.swift */; };
+		146BB2251F14C6290010D13C /* JSONSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146BB2241F14C6290010D13C /* JSONSerializer.swift */; };
+		146BB2291F1507B80010D13C /* WalletIDStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146BB2281F1507B80010D13C /* WalletIDStore.swift */; };
+		146BB22B1F150F8F0010D13C /* Wallet.plist in Resources */ = {isa = PBXBuildFile; fileRef = 146BB22A1F150F8F0010D13C /* Wallet.plist */; };
 		981D02341F0DF3990016C2BC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981D02331F0DF3990016C2BC /* AppDelegate.swift */; };
 		981D02361F0DF3990016C2BC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981D02351F0DF3990016C2BC /* ViewController.swift */; };
 		981D02391F0DF3990016C2BC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 981D02371F0DF3990016C2BC /* Main.storyboard */; };
@@ -26,6 +36,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		146BB2141F14AF530010D13C /* FPDashboardInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FPDashboardInteractor.swift; path = Scenes/FlypoolDashboard/FPDashboardInteractor.swift; sourceTree = "<group>"; };
+		146BB2151F14AF530010D13C /* FPDashboardModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FPDashboardModels.swift; path = Scenes/FlypoolDashboard/FPDashboardModels.swift; sourceTree = "<group>"; };
+		146BB2161F14AF530010D13C /* FPDashboardPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FPDashboardPresenter.swift; path = Scenes/FlypoolDashboard/FPDashboardPresenter.swift; sourceTree = "<group>"; };
+		146BB2171F14AF530010D13C /* FPDashboardRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FPDashboardRouter.swift; path = Scenes/FlypoolDashboard/FPDashboardRouter.swift; sourceTree = "<group>"; };
+		146BB2181F14AF530010D13C /* FPDashboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FPDashboardViewController.swift; path = Scenes/FlypoolDashboard/FPDashboardViewController.swift; sourceTree = "<group>"; };
+		146BB2191F14AF530010D13C /* FPDashboardWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FPDashboardWorker.swift; path = Scenes/FlypoolDashboard/FPDashboardWorker.swift; sourceTree = "<group>"; };
+		146BB2211F14AFEB0010D13C /* FPData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FPData.swift; path = Models/FPData.swift; sourceTree = "<group>"; };
+		146BB2241F14C6290010D13C /* JSONSerializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JSONSerializer.swift; path = Services/JSONSerializer.swift; sourceTree = "<group>"; };
+		146BB2281F1507B80010D13C /* WalletIDStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WalletIDStore.swift; path = Services/WalletIDStore.swift; sourceTree = "<group>"; };
+		146BB22A1F150F8F0010D13C /* Wallet.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Wallet.plist; sourceTree = "<group>"; };
 		981D02301F0DF3990016C2BC /* Cryptorio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cryptorio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		981D02331F0DF3990016C2BC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		981D02351F0DF3990016C2BC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -56,6 +76,43 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		146BB2121F14AE040010D13C /* FlypoolDashboard */ = {
+			isa = PBXGroup;
+			children = (
+				146BB2141F14AF530010D13C /* FPDashboardInteractor.swift */,
+				146BB2151F14AF530010D13C /* FPDashboardModels.swift */,
+				146BB2161F14AF530010D13C /* FPDashboardPresenter.swift */,
+				146BB2171F14AF530010D13C /* FPDashboardRouter.swift */,
+				146BB2181F14AF530010D13C /* FPDashboardViewController.swift */,
+				146BB2191F14AF530010D13C /* FPDashboardWorker.swift */,
+			);
+			name = FlypoolDashboard;
+			sourceTree = "<group>";
+		};
+		146BB2131F14AE150010D13C /* NicehashDashboard */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = NicehashDashboard;
+			sourceTree = "<group>";
+		};
+		146BB2201F14AF700010D13C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				146BB2211F14AFEB0010D13C /* FPData.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		146BB2231F14C6080010D13C /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				146BB2241F14C6290010D13C /* JSONSerializer.swift */,
+				146BB2281F1507B80010D13C /* WalletIDStore.swift */,
+			);
+			name = Services;
+			sourceTree = "<group>";
+		};
 		981D02271F0DF3990016C2BC = {
 			isa = PBXGroup;
 			children = (
@@ -77,6 +134,8 @@
 		981D02321F0DF3990016C2BC /* Cryptorio */ = {
 			isa = PBXGroup;
 			children = (
+				146BB2231F14C6080010D13C /* Services */,
+				146BB2201F14AF700010D13C /* Models */,
 				981D02561F0DF7FF0016C2BC /* Scenes */,
 				981D02531F0DF4900016C2BC /* AppDelegate */,
 				981D02541F0DF5350016C2BC /* Storyboard */,
@@ -117,6 +176,7 @@
 			children = (
 				981D023A1F0DF3990016C2BC /* Assets.xcassets */,
 				981D023F1F0DF3990016C2BC /* Info.plist */,
+				146BB22A1F150F8F0010D13C /* Wallet.plist */,
 			);
 			name = Assets;
 			sourceTree = "<group>";
@@ -124,6 +184,8 @@
 		981D02561F0DF7FF0016C2BC /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				146BB2121F14AE040010D13C /* FlypoolDashboard */,
+				146BB2131F14AE150010D13C /* NicehashDashboard */,
 			);
 			name = Scenes;
 			sourceTree = "<group>";
@@ -216,6 +278,7 @@
 				981D023E1F0DF3990016C2BC /* LaunchScreen.storyboard in Resources */,
 				981D023B1F0DF3990016C2BC /* Assets.xcassets in Resources */,
 				981D02391F0DF3990016C2BC /* Main.storyboard in Resources */,
+				146BB22B1F150F8F0010D13C /* Wallet.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -233,8 +296,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				146BB21B1F14AF530010D13C /* FPDashboardModels.swift in Sources */,
+				146BB21E1F14AF530010D13C /* FPDashboardViewController.swift in Sources */,
+				146BB21F1F14AF530010D13C /* FPDashboardWorker.swift in Sources */,
+				146BB21A1F14AF530010D13C /* FPDashboardInteractor.swift in Sources */,
 				981D02361F0DF3990016C2BC /* ViewController.swift in Sources */,
+				146BB2291F1507B80010D13C /* WalletIDStore.swift in Sources */,
+				146BB2251F14C6290010D13C /* JSONSerializer.swift in Sources */,
+				146BB21D1F14AF530010D13C /* FPDashboardRouter.swift in Sources */,
+				146BB21C1F14AF530010D13C /* FPDashboardPresenter.swift in Sources */,
 				981D02341F0DF3990016C2BC /* AppDelegate.swift in Sources */,
+				146BB2221F14AFEB0010D13C /* FPData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -444,6 +516,7 @@
 				981D024F1F0DF3990016C2BC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		981D02501F0DF3990016C2BC /* Build configuration list for PBXNativeTarget "CryptorioTests" */ = {
 			isa = XCConfigurationList;
@@ -452,6 +525,7 @@
 				981D02521F0DF3990016C2BC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
