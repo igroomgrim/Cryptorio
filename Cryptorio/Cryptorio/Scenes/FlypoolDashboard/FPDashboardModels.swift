@@ -27,6 +27,15 @@ enum FPDashboard {
       struct DashboardData {
         let address: String
         let hashRate: String
+        let avgHashRate: String
+        let unpaidBalance: Double
+        
+        init(responseData: FPData) {
+          self.address = responseData.address
+          self.hashRate = responseData.hashRate
+          self.avgHashRate = String(format: "%.2f", responseData.avgHashrate)
+          self.unpaidBalance = responseData.unpaid
+        }
       }
       
       var displayedDashboardData: DashboardData
@@ -44,6 +53,10 @@ enum FPDashboard {
     struct ViewModel {
       struct DashboardError {
         let error: FPError
+        
+        init(responseError: FPError) {
+          self.error = responseError
+        }
       }
       
       var displayedDashboardError: DashboardError

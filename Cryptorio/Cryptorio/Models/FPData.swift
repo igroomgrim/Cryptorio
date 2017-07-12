@@ -41,9 +41,11 @@ struct FPData: Decodable {
     self.ethPerMin = ethPerMin
     self.usdPerMin = usdPerMin
     self.btcPerMin = btcPerMin
-    self.avgHashrate = avgHashrate
+    self.avgHashrate = avgHashrate/1000
     self.unpaid = unpaid/100_000_000
-    
+    print(self.avgHashrate)
+    let test = String(format: "%.2f", self.avgHashrate)
+    print(test)
     if let rounds = (json["rounds"] as? [JSON])?.flatMap(FPRound.init) {
       self.rounds = rounds
     } else {

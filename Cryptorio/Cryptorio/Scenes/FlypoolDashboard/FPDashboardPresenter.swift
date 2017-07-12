@@ -24,7 +24,7 @@ class FPDashboardPresenter: FPDashboardPresentationLogic {
   // MARK: Do something
   
   func presentDashboardData(response: FPDashboard.RequestData.Response) {
-    let dashboardData = FPDashboard.RequestData.ViewModel.DashboardData(address: response.flypoolData.address, hashRate: response.flypoolData.hashRate)
+    let dashboardData = FPDashboard.RequestData.ViewModel.DashboardData(responseData: response.flypoolData)
     
     let viewModel = FPDashboard.RequestData.ViewModel(displayedDashboardData: dashboardData)
     
@@ -36,7 +36,7 @@ class FPDashboardPresenter: FPDashboardPresentationLogic {
   }
   
   func presentDashboardErrorMessage(errorResponse: FPDashboard.ErrorData.Response) {
-    let errorData = FPDashboard.ErrorData.ViewModel.DashboardError(error: errorResponse.error)
+    let errorData = FPDashboard.ErrorData.ViewModel.DashboardError(responseError: errorResponse.error)
     
     let viewModel = FPDashboard.ErrorData.ViewModel(displayedDashboardError: errorData)
     
