@@ -19,6 +19,9 @@
 		146BB22B1F150F8F0010D13C /* Wallet.plist in Resources */ = {isa = PBXBuildFile; fileRef = 146BB22A1F150F8F0010D13C /* Wallet.plist */; };
 		1495B80F1F17EA1A0002678D /* NVActivityIndicatorView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1495B80E1F17EA1A0002678D /* NVActivityIndicatorView.framework */; };
 		1495B8111F17EA200002678D /* NVActivityIndicatorView.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1495B80E1F17EA1A0002678D /* NVActivityIndicatorView.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		1495B8181F17EEF40002678D /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1495B8161F17EEF40002678D /* Crashlytics.framework */; };
+		1495B8191F17EEF40002678D /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1495B8171F17EEF40002678D /* Fabric.framework */; };
+		1495B81C1F17F35D0002678D /* Answers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1495B81B1F17F35D0002678D /* Answers.framework */; };
 		14BC470B1F1687F7006712F0 /* Kanna.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14BC470A1F1687F7006712F0 /* Kanna.framework */; };
 		14BC470D1F168818006712F0 /* Kanna.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 14BC470A1F1687F7006712F0 /* Kanna.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		14BC47101F1688A8006712F0 /* HTMLParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14BC470F1F1688A8006712F0 /* HTMLParser.swift */; };
@@ -68,6 +71,9 @@
 		146BB2281F1507B80010D13C /* WalletIDStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WalletIDStore.swift; path = Services/WalletIDStore.swift; sourceTree = "<group>"; };
 		146BB22A1F150F8F0010D13C /* Wallet.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Wallet.plist; sourceTree = "<group>"; };
 		1495B80E1F17EA1A0002678D /* NVActivityIndicatorView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NVActivityIndicatorView.framework; path = Carthage/Build/iOS/NVActivityIndicatorView.framework; sourceTree = "<group>"; };
+		1495B8161F17EEF40002678D /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
+		1495B8171F17EEF40002678D /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
+		1495B81B1F17F35D0002678D /* Answers.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Answers.framework; sourceTree = "<group>"; };
 		14BC470A1F1687F7006712F0 /* Kanna.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kanna.framework; path = Carthage/Build/iOS/Kanna.framework; sourceTree = "<group>"; };
 		14BC470F1F1688A8006712F0 /* HTMLParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HTMLParser.swift; path = Services/HTMLParser.swift; sourceTree = "<group>"; };
 		9813831F1F16074F00725EE2 /* DateConverter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DateConverter.swift; path = Services/DateConverter.swift; sourceTree = "<group>"; };
@@ -88,8 +94,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1495B81C1F17F35D0002678D /* Answers.framework in Frameworks */,
 				1495B80F1F17EA1A0002678D /* NVActivityIndicatorView.framework in Frameworks */,
+				1495B8181F17EEF40002678D /* Crashlytics.framework in Frameworks */,
 				14BC470B1F1687F7006712F0 /* Kanna.framework in Frameworks */,
+				1495B8191F17EEF40002678D /* Fabric.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -145,6 +154,9 @@
 		14BC47091F1687F6006712F0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1495B81B1F17F35D0002678D /* Answers.framework */,
+				1495B8161F17EEF40002678D /* Crashlytics.framework */,
+				1495B8171F17EEF40002678D /* Fabric.framework */,
 				1495B80E1F17EA1A0002678D /* NVActivityIndicatorView.framework */,
 				14BC470A1F1687F7006712F0 /* Kanna.framework */,
 			);
@@ -240,6 +252,7 @@
 				981D022D1F0DF3990016C2BC /* Frameworks */,
 				981D022E1F0DF3990016C2BC /* Resources */,
 				14BC470E1F168818006712F0 /* Embed Frameworks */,
+				1495B81A1F17EF110002678D /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -330,6 +343,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1495B81A1F17EF110002678D /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PROJECT_DIR}/Fabric.framework/run\" c561168414b79944e79a8b93efadf688813e0baf 31f80f32cea5f56c7df78f2d762f5dd0f70fb8df47a7a6359bd3af646d116a96";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		981D022C1F0DF3990016C2BC /* Sources */ = {
@@ -493,6 +522,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = Cryptorio/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -510,6 +540,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = Cryptorio/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
