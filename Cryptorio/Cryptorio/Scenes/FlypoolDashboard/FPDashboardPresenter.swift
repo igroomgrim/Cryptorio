@@ -40,7 +40,7 @@ class FPDashboardPresenter: FPDashboardPresentationLogic {
     let activeWorkerCount = workers.filter({ $0.currentHashrate != "0 H/s"} ).count
     let inactiveWokerCount = workers.count - activeWorkerCount
   
-    let viewModel = FPDashboard.RequestWorkers.ViewModel(displayedDashboardWorkers: (activeWorker: activeWorkerCount, inactiveWorker: workers.count - activeWorkerCount, workers: workers))
+    let viewModel = FPDashboard.RequestWorkers.ViewModel(displayedDashboardWorkers: (activeWorker: activeWorkerCount, inactiveWorker: inactiveWokerCount, workers: workers))
     
     viewController?.displayDashboardWorkers(viewModel: viewModel)
   }
