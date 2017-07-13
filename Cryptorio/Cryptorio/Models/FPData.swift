@@ -146,3 +146,27 @@ struct FPRound {
     self.processed = processed
   }
 }
+
+struct FPHTMLWorker {
+  let workerName: String
+  let currentHashrate: String
+  let avgHashrate: String
+  let validShares: String
+  let invalidShares: String
+  
+  init?(wk: [String?]) {
+    guard let workerName = wk[0],
+      let currentHashrate = wk[1],
+      let avgHashrate = wk[2],
+      let validShares = wk[3],
+      let invalidShares = wk[4] else {
+        return nil
+    }
+    
+    self.workerName = workerName
+    self.currentHashrate = currentHashrate
+    self.avgHashrate = avgHashrate
+    self.validShares = validShares
+    self.invalidShares = invalidShares
+  }
+}

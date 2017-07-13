@@ -17,6 +17,9 @@
 		146BB2251F14C6290010D13C /* JSONSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146BB2241F14C6290010D13C /* JSONSerializer.swift */; };
 		146BB2291F1507B80010D13C /* WalletIDStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146BB2281F1507B80010D13C /* WalletIDStore.swift */; };
 		146BB22B1F150F8F0010D13C /* Wallet.plist in Resources */ = {isa = PBXBuildFile; fileRef = 146BB22A1F150F8F0010D13C /* Wallet.plist */; };
+		14BC470B1F1687F7006712F0 /* Kanna.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14BC470A1F1687F7006712F0 /* Kanna.framework */; };
+		14BC470D1F168818006712F0 /* Kanna.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 14BC470A1F1687F7006712F0 /* Kanna.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		14BC47101F1688A8006712F0 /* HTMLParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14BC470F1F1688A8006712F0 /* HTMLParser.swift */; };
 		981383201F16074F00725EE2 /* DateConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9813831F1F16074F00725EE2 /* DateConverter.swift */; };
 		981D02341F0DF3990016C2BC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981D02331F0DF3990016C2BC /* AppDelegate.swift */; };
 		981D02361F0DF3990016C2BC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981D02351F0DF3990016C2BC /* ViewController.swift */; };
@@ -36,6 +39,20 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		14BC470E1F168818006712F0 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				14BC470D1F168818006712F0 /* Kanna.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		146BB2141F14AF530010D13C /* FPDashboardInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FPDashboardInteractor.swift; path = Scenes/FlypoolDashboard/FPDashboardInteractor.swift; sourceTree = "<group>"; };
 		146BB2151F14AF530010D13C /* FPDashboardModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FPDashboardModels.swift; path = Scenes/FlypoolDashboard/FPDashboardModels.swift; sourceTree = "<group>"; };
@@ -47,6 +64,8 @@
 		146BB2241F14C6290010D13C /* JSONSerializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JSONSerializer.swift; path = Services/JSONSerializer.swift; sourceTree = "<group>"; };
 		146BB2281F1507B80010D13C /* WalletIDStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WalletIDStore.swift; path = Services/WalletIDStore.swift; sourceTree = "<group>"; };
 		146BB22A1F150F8F0010D13C /* Wallet.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Wallet.plist; sourceTree = "<group>"; };
+		14BC470A1F1687F7006712F0 /* Kanna.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kanna.framework; path = Carthage/Build/iOS/Kanna.framework; sourceTree = "<group>"; };
+		14BC470F1F1688A8006712F0 /* HTMLParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HTMLParser.swift; path = Services/HTMLParser.swift; sourceTree = "<group>"; };
 		9813831F1F16074F00725EE2 /* DateConverter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DateConverter.swift; path = Services/DateConverter.swift; sourceTree = "<group>"; };
 		981D02301F0DF3990016C2BC /* Cryptorio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cryptorio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		981D02331F0DF3990016C2BC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -65,6 +84,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				14BC470B1F1687F7006712F0 /* Kanna.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,8 +132,17 @@
 				146BB2241F14C6290010D13C /* JSONSerializer.swift */,
 				146BB2281F1507B80010D13C /* WalletIDStore.swift */,
 				9813831F1F16074F00725EE2 /* DateConverter.swift */,
+				14BC470F1F1688A8006712F0 /* HTMLParser.swift */,
 			);
 			name = Services;
+			sourceTree = "<group>";
+		};
+		14BC47091F1687F6006712F0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				14BC470A1F1687F7006712F0 /* Kanna.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		981D02271F0DF3990016C2BC = {
@@ -122,6 +151,7 @@
 				981D02321F0DF3990016C2BC /* Cryptorio */,
 				981D02471F0DF3990016C2BC /* CryptorioTests */,
 				981D02311F0DF3990016C2BC /* Products */,
+				14BC47091F1687F6006712F0 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -203,6 +233,7 @@
 				981D022C1F0DF3990016C2BC /* Sources */,
 				981D022D1F0DF3990016C2BC /* Frameworks */,
 				981D022E1F0DF3990016C2BC /* Resources */,
+				14BC470E1F168818006712F0 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -309,6 +340,7 @@
 				146BB21D1F14AF530010D13C /* FPDashboardRouter.swift in Sources */,
 				981383201F16074F00725EE2 /* DateConverter.swift in Sources */,
 				146BB21C1F14AF530010D13C /* FPDashboardPresenter.swift in Sources */,
+				14BC47101F1688A8006712F0 /* HTMLParser.swift in Sources */,
 				981D02341F0DF3990016C2BC /* AppDelegate.swift in Sources */,
 				146BB2221F14AFEB0010D13C /* FPData.swift in Sources */,
 			);
@@ -393,6 +425,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "$(SDKROOT)/usr/include/libxml2";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -437,6 +470,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "$(SDKROOT)/usr/include/libxml2";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
@@ -450,6 +484,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 7W5MA8FGH5;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Cryptorio/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.igroomgrim.Cryptorio;
@@ -463,6 +501,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 7W5MA8FGH5;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Cryptorio/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.igroomgrim.Cryptorio;
