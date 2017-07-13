@@ -14,6 +14,19 @@ import UIKit
 
 enum FPDashboard {
   // MARK: Use cases
+  enum RequestWorkers {
+    struct Request {
+      
+    }
+    
+    struct Response {
+      let workers: [FPHTMLWorker]?
+    }
+    
+    struct ViewModel {
+      var displayedDashboardWorkers: (activeWorker: Int, inactiveWorker: Int, workers: [FPHTMLWorker]?)
+    }
+  }
   
   enum RequestData {
     struct Request {

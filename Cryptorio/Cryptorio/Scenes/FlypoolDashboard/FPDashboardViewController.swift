@@ -14,6 +14,7 @@ import UIKit
 
 protocol FPDashboardDisplayLogic: class {
   func displayDashboardData(viewModel: FPDashboard.RequestData.ViewModel)
+  func displayDashboardWorkers(viewModel: FPDashboard.RequestWorkers.ViewModel)
   func displayDashboardError(viewModel: FPDashboard.ErrorData.ViewModel)
   func displayDashboardAddWalletNotification()
 }
@@ -28,9 +29,10 @@ class FPDashboardViewController: UITableViewController, FPDashboardDisplayLogic 
   @IBOutlet weak var avgHashRateLabel: UILabel!
   @IBOutlet weak var unpaidBalanceLabel: UILabel!
   @IBOutlet weak var immatureBalanceLabel: UILabel!
+  @IBOutlet weak var activeWorkersLabel: UILabel!
+  @IBOutlet weak var inactiveWorkersLabel: UILabel!
   
   @IBOutlet weak var addAddressBarButton: UIBarButtonItem!
-  
   @IBOutlet weak var fpRefreshControl: UIRefreshControl!
   // MARK: Object lifecycle
   
@@ -74,17 +76,26 @@ class FPDashboardViewController: UITableViewController, FPDashboardDisplayLogic 
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    clearFooterCell()
   }
   
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
     fetchDashboardDataOnDidAppear()
+    
   }
   
   // MARK: Do something
+  func clearFooterCell() {
+    tableView.tableFooterView = UIView()
+  }
+  
   func fetchDashboardDataOnDidAppear() {
     let request = FPDashboard.RequestData.Request()
     interactor?.fetchData(request: request)
+    
+    let requestWorkers = FPDashboard.RequestWorkers.Request()
+    interactor?.fetchFPWorkers(request: requestWorkers)
   }
   
   func displayDashboardData(viewModel: FPDashboard.RequestData.ViewModel) {
@@ -96,6 +107,12 @@ class FPDashboardViewController: UITableViewController, FPDashboardDisplayLogic 
     immatureBalanceLabel.text = displayedDashboardData.immatureBalance
     
     fpRefreshControl.endRefreshing()
+  }
+  
+  func displayDashboardWorkers(viewModel: FPDashboard.RequestWorkers.ViewModel) {
+    let data = viewModel.displayedDashboardWorkers
+    activeWorkersLabel.text = "\(data.activeWorker)"
+    inactiveWorkersLabel.text = "\(data.inactiveWorker)"
   }
   
   func displayDashboardError(viewModel: FPDashboard.ErrorData.ViewModel) {

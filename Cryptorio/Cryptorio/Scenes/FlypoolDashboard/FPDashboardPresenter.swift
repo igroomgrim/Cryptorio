@@ -14,6 +14,7 @@ import UIKit
 
 protocol FPDashboardPresentationLogic {
   func presentDashboardData(response: FPDashboard.RequestData.Response)
+  func presentWorkersData(response: FPDashboard.RequestWorkers.Response)
   func presentDashboardAddWalletNotification()
   func presentDashboardErrorMessage(errorResponse: FPDashboard.ErrorData.Response)
 }
@@ -29,6 +30,19 @@ class FPDashboardPresenter: FPDashboardPresentationLogic {
     let viewModel = FPDashboard.RequestData.ViewModel(displayedDashboardData: dashboardData)
     
     viewController?.displayDashboardData(viewModel: viewModel)
+  }
+  
+  func presentWorkersData(response: FPDashboard.RequestWorkers.Response) {
+    guard let workers = response.workers else {
+      return
+    }
+    
+    let activeWorkerCount = workers.filter({ $0.currentHashrate != "0 H/s"} ).count
+    let inactiveWokerCount = workers.count - activeWorkerCount
+  
+    let viewModel = FPDashboard.RequestWorkers.ViewModel(displayedDashboardWorkers: (activeWorker: activeWorkerCount, inactiveWorker: workers.count - activeWorkerCount, workers: workers))
+    
+    viewController?.displayDashboardWorkers(viewModel: viewModel)
   }
   
   func presentDashboardAddWalletNotification() {

@@ -14,6 +14,7 @@ import UIKit
 
 protocol FPDashboardBusinessLogic {
   func fetchData(request: FPDashboard.RequestData.Request)
+  func fetchFPWorkers(request: FPDashboard.RequestWorkers.Request)
 }
 
 protocol FPDashboardDataStore {
@@ -25,9 +26,11 @@ class FPDashboardInteractor: FPDashboardBusinessLogic, FPDashboardDataStore {
   var worker: FPDashboardWorker?
   var fpData: FPData?
   
-  func fetchData(request: FPDashboard.RequestData.Request) {
+  init() {
     worker = FPDashboardWorker()
-    
+  }
+  
+  func fetchData(request: FPDashboard.RequestData.Request) {
     guard let walletID = worker?.fetchWalletID() else {
       self.presenter?.presentDashboardAddWalletNotification()
       return
@@ -45,5 +48,18 @@ class FPDashboardInteractor: FPDashboardBusinessLogic, FPDashboardDataStore {
           self?.presenter?.presentDashboardErrorMessage(errorResponse: errorResponse)
       }
     })
+  }
+  
+  func fetchFPWorkers(request: FPDashboard.RequestWorkers.Request) {
+    guard let walletID = worker?.fetchWalletID() else {
+      return
+    }
+    
+    guard let workers = worker?.fetchWorkers(walletID: walletID) else {
+      return
+    }
+    
+    let response = FPDashboard.RequestWorkers.Response(workers: workers)
+    self.presenter?.presentWorkersData(response: response)
   }
 }
