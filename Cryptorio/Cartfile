@@ -1,4 +1,4 @@
 # vim: filetype=ruby
 
 github "tid-kijyun/Kanna" ~> 2.1.0
-
+github "ninjaprox/NVActivityIndicatorView"

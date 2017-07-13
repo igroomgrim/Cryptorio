@@ -17,6 +17,8 @@
 		146BB2251F14C6290010D13C /* JSONSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146BB2241F14C6290010D13C /* JSONSerializer.swift */; };
 		146BB2291F1507B80010D13C /* WalletIDStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146BB2281F1507B80010D13C /* WalletIDStore.swift */; };
 		146BB22B1F150F8F0010D13C /* Wallet.plist in Resources */ = {isa = PBXBuildFile; fileRef = 146BB22A1F150F8F0010D13C /* Wallet.plist */; };
+		1495B80F1F17EA1A0002678D /* NVActivityIndicatorView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1495B80E1F17EA1A0002678D /* NVActivityIndicatorView.framework */; };
+		1495B8111F17EA200002678D /* NVActivityIndicatorView.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1495B80E1F17EA1A0002678D /* NVActivityIndicatorView.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		14BC470B1F1687F7006712F0 /* Kanna.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14BC470A1F1687F7006712F0 /* Kanna.framework */; };
 		14BC470D1F168818006712F0 /* Kanna.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 14BC470A1F1687F7006712F0 /* Kanna.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		14BC47101F1688A8006712F0 /* HTMLParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14BC470F1F1688A8006712F0 /* HTMLParser.swift */; };
@@ -46,6 +48,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				1495B8111F17EA200002678D /* NVActivityIndicatorView.framework in Embed Frameworks */,
 				14BC470D1F168818006712F0 /* Kanna.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -64,6 +67,7 @@
 		146BB2241F14C6290010D13C /* JSONSerializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JSONSerializer.swift; path = Services/JSONSerializer.swift; sourceTree = "<group>"; };
 		146BB2281F1507B80010D13C /* WalletIDStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WalletIDStore.swift; path = Services/WalletIDStore.swift; sourceTree = "<group>"; };
 		146BB22A1F150F8F0010D13C /* Wallet.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Wallet.plist; sourceTree = "<group>"; };
+		1495B80E1F17EA1A0002678D /* NVActivityIndicatorView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NVActivityIndicatorView.framework; path = Carthage/Build/iOS/NVActivityIndicatorView.framework; sourceTree = "<group>"; };
 		14BC470A1F1687F7006712F0 /* Kanna.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kanna.framework; path = Carthage/Build/iOS/Kanna.framework; sourceTree = "<group>"; };
 		14BC470F1F1688A8006712F0 /* HTMLParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HTMLParser.swift; path = Services/HTMLParser.swift; sourceTree = "<group>"; };
 		9813831F1F16074F00725EE2 /* DateConverter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DateConverter.swift; path = Services/DateConverter.swift; sourceTree = "<group>"; };
@@ -84,6 +88,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1495B80F1F17EA1A0002678D /* NVActivityIndicatorView.framework in Frameworks */,
 				14BC470B1F1687F7006712F0 /* Kanna.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -140,6 +145,7 @@
 		14BC47091F1687F6006712F0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1495B80E1F17EA1A0002678D /* NVActivityIndicatorView.framework */,
 				14BC470A1F1687F7006712F0 /* Kanna.framework */,
 			);
 			name = Frameworks;

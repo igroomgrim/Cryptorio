@@ -11,6 +11,7 @@
 //
 
 import UIKit
+import NVActivityIndicatorView
 
 protocol FPDashboardDisplayLogic: class {
   func displayDashboardData(viewModel: FPDashboard.RequestData.ViewModel)
@@ -19,7 +20,7 @@ protocol FPDashboardDisplayLogic: class {
   func displayDashboardAddWalletNotification()
 }
 
-class FPDashboardViewController: UITableViewController, FPDashboardDisplayLogic {
+class FPDashboardViewController: UITableViewController, FPDashboardDisplayLogic, NVActivityIndicatorViewable {
   var interactor: FPDashboardBusinessLogic?
   var router: (NSObjectProtocol & FPDashboardRoutingLogic & FPDashboardDataPassing)?
   
@@ -95,6 +96,8 @@ class FPDashboardViewController: UITableViewController, FPDashboardDisplayLogic 
   }
   
   func fetchDashboardDataOnDidAppear() {
+    startAnimating()
+    
     let request = FPDashboard.RequestData.Request()
     interactor?.fetchData(request: request)
     
@@ -110,6 +113,7 @@ class FPDashboardViewController: UITableViewController, FPDashboardDisplayLogic 
     unpaidBalanceLabel.text = displayedDashboardData.unpaidBalance
     immatureBalanceLabel.text = displayedDashboardData.immatureBalance
     
+    stopAnimating()
     fpRefreshControl.endRefreshing()
   }
   
