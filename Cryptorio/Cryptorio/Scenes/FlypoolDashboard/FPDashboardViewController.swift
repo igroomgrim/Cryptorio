@@ -79,23 +79,20 @@ class FPDashboardViewController: UITableViewController, FPDashboardDisplayLogic,
     super.viewDidLoad()
     registerDidBecomeActiveNotification()
     clearFooterCell()
-  }
-  
-  override func viewDidAppear(_ animated: Bool) {
-    super.viewDidAppear(animated)
-    fetchDashboardDataOnDidAppear()
+    fetchDashboardData()
   }
   
   // MARK: Do something
   func registerDidBecomeActiveNotification() {
-    NotificationCenter.default.addObserver(self, selector: #selector(fetchDashboardDataOnDidAppear), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
+    NotificationCenter.default.addObserver(self, selector: #selector(fetchDashboardData), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
   }
   
   func clearFooterCell() {
     tableView.tableFooterView = UIView()
   }
   
-  func fetchDashboardDataOnDidAppear() {
+  func fetchDashboardData() {
+    // Display loading indicator
     startAnimating()
     
     let request = FPDashboard.RequestData.Request()
@@ -152,7 +149,7 @@ class FPDashboardViewController: UITableViewController, FPDashboardDisplayLogic,
       
       walletIDStore.saveWalletID(walletID: walletID, pool: .flypool)
       
-      self?.fetchDashboardDataOnDidAppear()
+      self?.fetchDashboardData()
     }))
     
     self.present(alert, animated: true, completion: nil)
@@ -179,7 +176,7 @@ class FPDashboardViewController: UITableViewController, FPDashboardDisplayLogic,
       
       walletIDStore.saveWalletID(walletID: walletID, pool: .flypool)
       
-      self?.fetchDashboardDataOnDidAppear()
+      self?.fetchDashboardData()
     }))
     
     self.present(alert, animated: true, completion: nil)
