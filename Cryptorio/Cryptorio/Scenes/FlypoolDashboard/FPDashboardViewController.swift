@@ -76,16 +76,20 @@ class FPDashboardViewController: UITableViewController, FPDashboardDisplayLogic 
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    registerDidBecomeActiveNotification()
     clearFooterCell()
   }
   
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
     fetchDashboardDataOnDidAppear()
-    
   }
   
   // MARK: Do something
+  func registerDidBecomeActiveNotification() {
+    NotificationCenter.default.addObserver(self, selector: #selector(fetchDashboardDataOnDidAppear), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
+  }
+  
   func clearFooterCell() {
     tableView.tableFooterView = UIView()
   }
