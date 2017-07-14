@@ -28,7 +28,6 @@ class HTMLParser {
       } else if let data = data,
         let response = response as? HTTPURLResponse,
         response.statusCode == 200 {
-        
         guard let doc = HTML(html: data, encoding: .isoLatin1) else {
           DispatchQueue.main.async {
             completion(nil)

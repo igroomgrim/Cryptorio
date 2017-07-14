@@ -8,6 +8,16 @@
 
 import Foundation
 
+enum FPResult<U> {
+  case Success(result: U)
+  case Failure(error: FPError)
+}
+
+enum FPError: Error {
+  case CannotFetch(String)
+  case Other(String)
+}
+
 struct FPData: Decodable {
   let address: String
   let hashRate: String

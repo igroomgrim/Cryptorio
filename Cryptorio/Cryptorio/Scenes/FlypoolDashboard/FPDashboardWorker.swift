@@ -12,55 +12,99 @@
 
 import UIKit
 
-enum FPResult<U> {
-  case Success(result: U)
-  case Failure(error: FPError)
-}
-
-enum FPError: Error {
-  case CannotFetch(String)
-}
-
 class FPDashboardWorker {
   let defaultSession = URLSession(configuration: .default)
   var dataTask: URLSessionDataTask?
   
   func fetchAPIData(walletID: String, completion: @escaping (FPResult<FPData>) -> Void) {
-    if var urlComponents = URLComponents(string: "http://zcash.flypool.org/api/miner_new/\(walletID)") {
-      guard let url = urlComponents.url else { return }
+    
+    guard let urlComponents = URLComponents(string: "http://zcash.flypool.org/api/miner_new/\(walletID)") else {
+      let fpError = FPError.CannotFetch("Can't parse URLs based on RFC 3986 and to construct URLs from this url")
+      let errorResult = FPResult<FPData>.Failure(error: fpError)
+      DispatchQueue.main.async {
+        completion(errorResult)
+      }
       
-      dataTask = defaultSession.dataTask(with: url) { data, response, error in
-        defer { self.dataTask = nil }
+      return
+    }
+    
+    guard let url = urlComponents.url else {
+      let fpError = FPError.CannotFetch("URL from urlComponents is empty")
+      let errorResult = FPResult<FPData>.Failure(error: fpError)
+      DispatchQueue.main.async {
+        completion(errorResult)
+      }
+      
+      return
+    }
+      
+    dataTask = defaultSession.dataTask(with: url) { data, response, error in
+      defer { self.dataTask = nil }
         
-        if let error = error {
-          let fpError = FPError.CannotFetch(error.localizedDescription)
-          let errorResult = FPResult<FPData>.Failure(error: fpError)
-          DispatchQueue.main.async {
-            completion(errorResult)
-          }
+      if let err = error {
+        let fpError = FPError.CannotFetch(err.localizedDescription)
+        let errorResult = FPResult<FPData>.Failure(error: fpError)
+        DispatchQueue.main.async {
+          completion(errorResult)
+        }
+        
+        return
+      }
+        
+      guard let data = data else {
+        let error = FPError.CannotFetch("Reponse data is empty. We can't fetch data from Flypool API")
+        let errorResult = FPResult<FPData>.Failure(error: error)
+        DispatchQueue.main.async {
+          completion(errorResult)
+        }
+        
+        return
+      }
+        
+      guard let httpResponse = response as? HTTPURLResponse else {
+        let error = FPError.CannotFetch("Can't fetch response data from Flypool API")
+        let errorResult = FPResult<FPData>.Failure(error: error)
+        DispatchQueue.main.async {
+          completion(errorResult)
+        }
+        
+        return
+      }
           
-        } else if let data = data,
-          let response = response as? HTTPURLResponse,
-          response.statusCode == 200 {
-          
+      switch httpResponse.statusCode {
+        case 200..<300:
           guard let fpData = FPData(data: data) else {
-            let error = FPError.CannotFetch("Can't fetch data from Flypool API")
+            let error = FPError.CannotFetch("Can't parse data from Flypool API")
             let errorResult = FPResult<FPData>.Failure(error: error)
             DispatchQueue.main.async {
               completion(errorResult)
             }
+            
             return
           }
-
+            
           let result = FPResult.Success(result: fpData)
           DispatchQueue.main.async {
             completion(result)
           }
+            
+        case 400..<600:
+          let error = FPError.CannotFetch(httpResponse.debugDescription)
+          let errorResult = FPResult<FPData>.Failure(error: error)
+          DispatchQueue.main.async {
+            completion(errorResult)
+          }
+            
+        default:
+          let error = FPError.CannotFetch("unrecognized HTTP status code: \(httpResponse.statusCode)")
+          let errorResult = FPResult<FPData>.Failure(error: error)
+          DispatchQueue.main.async {
+            completion(errorResult)
+          }
         }
-      }
+      } // dataTask
       
       dataTask?.resume()
-    }
   }
   
   func fetchWalletID() -> String? {

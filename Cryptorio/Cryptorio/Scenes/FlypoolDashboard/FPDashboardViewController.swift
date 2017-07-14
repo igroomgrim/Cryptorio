@@ -153,11 +153,13 @@ class FPDashboardViewController: UITableViewController, FPDashboardDisplayLogic,
     var errorMessageOnDisplay = ""
     
     switch error {
-    case .CannotFetch(let errorMessage):
-      errorMessageOnDisplay = errorMessage
+      case .CannotFetch(let errorMessage):
+        errorMessageOnDisplay = errorMessage
+      case .Other(let errorMessage):
+        errorMessageOnDisplay = errorMessage
     }
     
-    let alert = UIAlertController(title: "System error", message: errorMessageOnDisplay, preferredStyle: .alert)
+    let alert = UIAlertController(title: "Cryptorio Error", message: errorMessageOnDisplay, preferredStyle: .alert)
     alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
     self.present(alert, animated: true) { [weak self] in
       self?.stopIndicatorAnimating()
