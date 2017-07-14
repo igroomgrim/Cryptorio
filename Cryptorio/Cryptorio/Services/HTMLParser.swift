@@ -10,27 +10,51 @@ import Foundation
 import Kanna
 
 class HTMLParser {
-  class func parseWorkersTable(walletID: String) -> [FPHTMLWorker]? {
+  class func parseWorkersTable(walletID: String, completion: @escaping ([FPHTMLWorker]?) -> Void) {
     guard let url = URL(string: "http://zcash.flypool.org/miners/\(walletID)") else {
-      return nil
+      completion(nil)
+      return
     }
     
-    if let doc = HTML(url: url, encoding: .isoLatin1) {
-      var tempData: [[String?]] = []
-      
-      for trData in doc.xpath("//table/tbody/tr") {
-        var tempArr: [String?] = []
-        for tdData in trData.xpath("td") {
-          tempArr.append(tdData.text)
+    let defaultSession = URLSession(configuration: .default)
+    var dataTask: URLSessionDataTask?
+    
+    dataTask = defaultSession.dataTask(with: url) { data, response, error in
+      defer { dataTask = nil }
+      if let _ = error {
+        DispatchQueue.main.async {
+          completion(nil)
+        }
+      } else if let data = data,
+        let response = response as? HTTPURLResponse,
+        response.statusCode == 200 {
+        
+        guard let doc = HTML(html: data, encoding: .isoLatin1) else {
+          DispatchQueue.main.async {
+            completion(nil)
+          }
+          return
         }
         
-        tempData.append(tempArr)
+        var tempData: [[String?]] = []
+        
+        for trData in doc.xpath("//table/tbody/tr") {
+          var tempArr: [String?] = []
+          for tdData in trData.xpath("td") {
+            tempArr.append(tdData.text)
+          }
+          
+          tempData.append(tempArr)
+        }
+        
+        let workers = tempData.flatMap(FPHTMLWorker.init(wk:))
+        DispatchQueue.main.async {
+          completion(workers)
+        }
+        
       }
-            
-      let workers = tempData.flatMap(FPHTMLWorker.init(wk:))
-      return workers
-    } else {
-      return nil
     }
+    
+    dataTask?.resume()
   }
 }

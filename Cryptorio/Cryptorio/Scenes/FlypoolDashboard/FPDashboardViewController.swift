@@ -24,6 +24,13 @@ class FPDashboardViewController: UITableViewController, FPDashboardDisplayLogic,
   var interactor: FPDashboardBusinessLogic?
   var router: (NSObjectProtocol & FPDashboardRoutingLogic & FPDashboardDataPassing)?
   
+  var loadedAllDataChecker: Int = 0 {
+    didSet {
+      if loadedAllDataChecker == 2 {
+        stopIndicatorAnimating()
+      }
+    }
+  }
   
   @IBOutlet weak var addressLabel: UILabel!
   @IBOutlet weak var hashRateLabel: UILabel!
@@ -34,7 +41,7 @@ class FPDashboardViewController: UITableViewController, FPDashboardDisplayLogic,
   @IBOutlet weak var inactiveWorkersLabel: UILabel!
   
   @IBOutlet weak var addAddressBarButton: UIBarButtonItem!
-  @IBOutlet weak var fpRefreshControl: UIRefreshControl!
+
   // MARK: Object lifecycle
   
   override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
@@ -79,7 +86,12 @@ class FPDashboardViewController: UITableViewController, FPDashboardDisplayLogic,
     super.viewDidLoad()
     registerDidBecomeActiveNotification()
     clearFooterCell()
+    
     fetchDashboardData()
+  }
+  
+  override func viewDidAppear(_ animated: Bool) {
+    super.viewDidAppear(animated)
   }
   
   // MARK: Do something
@@ -91,15 +103,30 @@ class FPDashboardViewController: UITableViewController, FPDashboardDisplayLogic,
     tableView.tableFooterView = UIView()
   }
   
-  func fetchDashboardData() {
-    // Display loading indicator
-    startAnimating()
+  private func loadDashboardData() {
+    loadedAllDataChecker = 0
     
     let request = FPDashboard.RequestData.Request()
     interactor?.fetchData(request: request)
     
     let requestWorkers = FPDashboard.RequestWorkers.Request()
     interactor?.fetchFPWorkers(request: requestWorkers)
+  }
+  
+  private func stopIndicatorAnimating() {
+    refreshControl?.endRefreshing()
+    stopAnimating()
+  }
+  
+  func fetchDashboardData() {
+    // Display loading indicator
+    startAnimating()
+    
+    loadDashboardData()
+  }
+  
+  func reloadDashboardData() {
+    loadDashboardData()
   }
   
   func displayDashboardData(viewModel: FPDashboard.RequestData.ViewModel) {
@@ -110,20 +137,21 @@ class FPDashboardViewController: UITableViewController, FPDashboardDisplayLogic,
     unpaidBalanceLabel.text = displayedDashboardData.unpaidBalance
     immatureBalanceLabel.text = displayedDashboardData.immatureBalance
     
-    stopAnimating()
-    fpRefreshControl.endRefreshing()
+    loadedAllDataChecker += 1
   }
   
   func displayDashboardWorkers(viewModel: FPDashboard.RequestWorkers.ViewModel) {
     let data = viewModel.displayedDashboardWorkers
     activeWorkersLabel.text = "\(data.activeWorker)"
     inactiveWorkersLabel.text = "\(data.inactiveWorker)"
+    
+    loadedAllDataChecker += 1
   }
   
   func displayDashboardError(viewModel: FPDashboard.ErrorData.ViewModel) {
-    fpRefreshControl.endRefreshing()
     let error = viewModel.displayedDashboardError.error
     var errorMessageOnDisplay = ""
+    
     switch error {
     case .CannotFetch(let errorMessage):
       errorMessageOnDisplay = errorMessage
@@ -131,7 +159,9 @@ class FPDashboardViewController: UITableViewController, FPDashboardDisplayLogic,
     
     let alert = UIAlertController(title: "System error", message: errorMessageOnDisplay, preferredStyle: .alert)
     alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
-    self.present(alert, animated: true, completion: nil)
+    self.present(alert, animated: true) { [weak self] in
+      self?.stopIndicatorAnimating()
+    }
   }
   
   func displayDashboardAddWalletNotification() {
@@ -154,8 +184,6 @@ class FPDashboardViewController: UITableViewController, FPDashboardDisplayLogic,
   }
   
   @IBAction func addAddressBarButtonTapped(_ sender: Any) {
-    let walletIDStore = WalletIDStore()
-    
     let alert = UIAlertController(title: "Add Flypool(Zec) WalletID", message: "", preferredStyle: .alert)
     alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
     
@@ -181,7 +209,6 @@ class FPDashboardViewController: UITableViewController, FPDashboardDisplayLogic,
   }
   
   @IBAction func refreshControlChanged(_ sender: Any) {
-    let request = FPDashboard.RequestData.Request()
-    interactor?.fetchData(request: request)
+    reloadDashboardData()
   }
 }

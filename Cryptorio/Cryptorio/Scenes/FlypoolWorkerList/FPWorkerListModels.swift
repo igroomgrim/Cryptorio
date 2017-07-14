@@ -25,4 +25,15 @@ enum FPWorkerList {
       var displayedFPWorkers: [FPHTMLWorker]?
     }
   }
+  
+  enum FetchWorkers {
+    struct Request {
+    }
+    struct Response {
+      var fpWorkers: [FPHTMLWorker]?
+    }
+    struct ViewModel {
+      var displayedFPWorkers: [FPHTMLWorker]?
+    }
+  }
 }

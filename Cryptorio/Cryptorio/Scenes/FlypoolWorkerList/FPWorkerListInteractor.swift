@@ -14,6 +14,7 @@ import UIKit
 
 protocol FPWorkerListBusinessLogic {
   func getWorkers(request: FPWorkerList.GetWorkers.Request)
+  func fetchWorkers(request: FPWorkerList.FetchWorkers.Request)
 }
 
 protocol FPWorkerListDataStore {
@@ -23,12 +24,30 @@ protocol FPWorkerListDataStore {
 class FPWorkerListInteractor: FPWorkerListBusinessLogic, FPWorkerListDataStore {
   var presenter: FPWorkerListPresentationLogic?
   var worker: FPWorkerListWorker?
-  var fpWorkers: [FPHTMLWorker]?
   
-  // MARK: Get Workers
+  var fpWorkers: [FPHTMLWorker]?
+
+  init() {
+    worker = FPWorkerListWorker()
+  }
   
   func getWorkers(request: FPWorkerList.GetWorkers.Request) {
     let response = FPWorkerList.GetWorkers.Response(fpWorkers: fpWorkers)
     presenter?.presentWorkerList(response: response)
+  }
+  
+  func fetchWorkers(request: FPWorkerList.FetchWorkers.Request) {
+    guard let walletID = worker?.fetchWalletID() else {
+      return
+    }
+    
+    worker?.fetchWorkers(walletID: walletID, completion: { [weak self] wks in
+      guard let fpWorkers = wks else {
+        return
+      }
+      
+      let response = FPWorkerList.GetWorkers.Response(fpWorkers: fpWorkers)
+      self?.presenter?.presentWorkerList(response: response)
+    })
   }
 }

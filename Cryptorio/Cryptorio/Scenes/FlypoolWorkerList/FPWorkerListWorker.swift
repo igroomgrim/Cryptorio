@@ -13,6 +13,11 @@
 import UIKit
 
 class FPWorkerListWorker {
-  func doSomeWork() {
+  func fetchWorkers(walletID: String, completion: @escaping ([FPHTMLWorker]?) -> Void) {
+    HTMLParser.parseWorkersTable(walletID: walletID, completion: completion)
+  }
+  
+  func fetchWalletID() -> String? {
+    return WalletIDStore.getWalletID(from: .flypool)
   }
 }

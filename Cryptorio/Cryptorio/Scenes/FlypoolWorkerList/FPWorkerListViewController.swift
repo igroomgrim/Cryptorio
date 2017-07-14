@@ -69,18 +69,28 @@ class FPWorkerListViewController: UITableViewController, FPWorkerListDisplayLogi
   
   // MARK: Get Workers
   
-  //@IBOutlet weak var nameTextField: UITextField!
-  
   func getWorkers() {
     let request = FPWorkerList.GetWorkers.Request()
     interactor?.getWorkers(request: request)
   }
   
+  func fetchWorkers() {
+    let request = FPWorkerList.FetchWorkers.Request()
+    interactor?.fetchWorkers(request: request)
+
+  }
+  
   func displayWokerList(viewModel: FPWorkerList.GetWorkers.ViewModel) {
     if let workers = viewModel.displayedFPWorkers {
       displayedFPWorkers = workers
+    
       tableView.reloadData()
+      refreshControl?.endRefreshing()
     }
+  }
+  
+  @IBAction func refreshControlChanged(_ sender: Any) {
+    fetchWorkers()
   }
 }
 

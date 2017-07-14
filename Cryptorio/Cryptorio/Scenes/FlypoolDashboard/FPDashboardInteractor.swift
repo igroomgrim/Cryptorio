@@ -56,13 +56,15 @@ class FPDashboardInteractor: FPDashboardBusinessLogic, FPDashboardDataStore {
       return
     }
     
-    fpWokers = worker?.fetchWorkers(walletID: walletID)
-    
-    guard let workers = fpWokers else {
-      return
-    }
-    
-    let response = FPDashboard.RequestWorkers.Response(workers: workers)
-    self.presenter?.presentWorkersData(response: response)
+    worker?.fetchWorkers(walletID: walletID, completion: { [weak self] wks in
+      guard let workers = wks else {
+        return
+      }
+      
+      self?.fpWokers = workers
+      
+      let response = FPDashboard.RequestWorkers.Response(workers: workers)
+      self?.presenter?.presentWorkersData(response: response)
+    })
   }
 }

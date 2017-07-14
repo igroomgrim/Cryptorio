@@ -67,7 +67,7 @@ class FPDashboardWorker {
     return WalletIDStore.getWalletID(from: .flypool)
   }
   
-  func fetchWorkers(walletID: String) -> [FPHTMLWorker]? {
-    return HTMLParser.parseWorkersTable(walletID: walletID)
+  func fetchWorkers(walletID: String, completion: @escaping ([FPHTMLWorker]?) -> Void) {
+    HTMLParser.parseWorkersTable(walletID: walletID, completion: completion)
   }
 }

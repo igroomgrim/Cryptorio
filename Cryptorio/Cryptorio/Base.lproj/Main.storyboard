@@ -301,7 +301,6 @@
                         <outlet property="addAddressBarButton" destination="Eu3-cI-3Qs" id="GfH-y1-M0b"/>
                         <outlet property="addressLabel" destination="Wm0-54-1Xy" id="fWf-KB-9eA"/>
                         <outlet property="avgHashRateLabel" destination="puy-4T-nbY" id="hni-Sw-3TS"/>
-                        <outlet property="fpRefreshControl" destination="db8-K9-KXo" id="0sw-xp-NPp"/>
                         <outlet property="hashRateLabel" destination="nED-25-IKr" id="qzH-aw-ylh"/>
                         <outlet property="immatureBalanceLabel" destination="plG-EO-6hw" id="vf1-3f-yuJ"/>
                         <outlet property="inactiveWorkersLabel" destination="v30-rg-hJy" id="Kud-uU-Z9h"/>
@@ -321,11 +320,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FPWorkerTableViewCell" id="coC-Rt-qTU" customClass="FPWorkerTableViewCell" customModule="Cryptorio" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="FPWorkerTableViewCell" id="coC-Rt-qTU" customClass="FPWorkerTableViewCell" customModule="Cryptorio" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="72"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="coC-Rt-qTU" id="eEq-9A-ZmR">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="71.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="72"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.0 kH/s - 0.0 kH/s" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.30000001192092896" translatesAutoresizingMaskIntoConstraints="NO" id="Y8n-kf-3J1">
@@ -369,6 +368,13 @@
                             <outlet property="delegate" destination="YF5-VW-Tgq" id="gZY-vp-V3x"/>
                         </connections>
                     </tableView>
+                    <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="xwP-8c-9Zf">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <attributedString key="attributedTitle"/>
+                        <connections>
+                            <action selector="refreshControlChanged:" destination="YF5-VW-Tgq" eventType="valueChanged" id="Jrf-kc-LYK"/>
+                        </connections>
+                    </refreshControl>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UdF-6h-sq9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
