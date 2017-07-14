@@ -94,10 +94,9 @@ extension FPWorkerListViewController {
   }
   
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCell(withIdentifier: "FPWorkerTableViewCell", for: indexPath)
-    
+    let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: FPWorkerTableViewCell.self), for: indexPath) as! FPWorkerTableViewCell
     let worker = displayedFPWorkers[indexPath.row]
-    cell.textLabel?.text = worker.workerName
+    cell.bind(to: worker)
     
     return cell
   }

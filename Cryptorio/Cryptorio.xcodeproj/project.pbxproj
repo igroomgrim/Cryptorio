@@ -38,6 +38,7 @@
 		981E092C1F1875950002FE6B /* FPWorkerListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981E09261F1875950002FE6B /* FPWorkerListRouter.swift */; };
 		981E092D1F1875950002FE6B /* FPWorkerListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981E09271F1875950002FE6B /* FPWorkerListViewController.swift */; };
 		981E092E1F1875950002FE6B /* FPWorkerListWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981E09281F1875950002FE6B /* FPWorkerListWorker.swift */; };
+		981E09311F188EEA0002FE6B /* FPWorkerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981E09301F188EEA0002FE6B /* FPWorkerTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,6 +100,7 @@
 		981E09261F1875950002FE6B /* FPWorkerListRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FPWorkerListRouter.swift; path = Scenes/FlypoolWorkerList/FPWorkerListRouter.swift; sourceTree = "<group>"; };
 		981E09271F1875950002FE6B /* FPWorkerListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FPWorkerListViewController.swift; path = Scenes/FlypoolWorkerList/FPWorkerListViewController.swift; sourceTree = "<group>"; };
 		981E09281F1875950002FE6B /* FPWorkerListWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FPWorkerListWorker.swift; path = Scenes/FlypoolWorkerList/FPWorkerListWorker.swift; sourceTree = "<group>"; };
+		981E09301F188EEA0002FE6B /* FPWorkerTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FPWorkerTableViewCell.swift; path = TableViewCell/FPWorkerTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -197,6 +199,7 @@
 		981D02321F0DF3990016C2BC /* Cryptorio */ = {
 			isa = PBXGroup;
 			children = (
+				981E092F1F188EB60002FE6B /* TableViewCell */,
 				146BB2231F14C6080010D13C /* Services */,
 				146BB2201F14AF700010D13C /* Models */,
 				981D02561F0DF7FF0016C2BC /* Scenes */,
@@ -265,6 +268,14 @@
 				981E09281F1875950002FE6B /* FPWorkerListWorker.swift */,
 			);
 			name = FlypoolWorkerList;
+			sourceTree = "<group>";
+		};
+		981E092F1F188EB60002FE6B /* TableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				981E09301F188EEA0002FE6B /* FPWorkerTableViewCell.swift */,
+			);
+			name = TableViewCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -408,6 +419,7 @@
 				146BB21C1F14AF530010D13C /* FPDashboardPresenter.swift in Sources */,
 				981E092D1F1875950002FE6B /* FPWorkerListViewController.swift in Sources */,
 				14BC47101F1688A8006712F0 /* HTMLParser.swift in Sources */,
+				981E09311F188EEA0002FE6B /* FPWorkerTableViewCell.swift in Sources */,
 				981D02341F0DF3990016C2BC /* AppDelegate.swift in Sources */,
 				146BB2221F14AFEB0010D13C /* FPData.swift in Sources */,
 			);
