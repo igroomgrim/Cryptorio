@@ -13,7 +13,7 @@
 import UIKit
 
 @objc protocol FPDashboardRoutingLogic {
-  //func routeToSomewhere(segue: UIStoryboardSegue?)
+  func routeToShowWorkerList(segue: UIStoryboardSegue?)
 }
 
 protocol FPDashboardDataPassing {
@@ -25,30 +25,25 @@ class FPDashboardRouter: NSObject, FPDashboardRoutingLogic, FPDashboardDataPassi
   var dataStore: FPDashboardDataStore?
   
   // MARK: Routing
+  func routeToShowWorkerList(segue: UIStoryboardSegue?) {
+    guard let segue = segue else {
+      return
+    }
+    
+    let destinationVC = segue.destination as! FPWorkerListViewController
+    var destinationDS = destinationVC.router!.dataStore!
+    passDataToShowWorkerList(source: dataStore!, destination: &destinationDS)
+  }
   
-  //func routeToSomewhere(segue: UIStoryboardSegue?) {
-  //  if let segue = segue {
-  //    let destinationVC = segue.destination as! SomewhereViewController
-  //    var destinationDS = destinationVC.router!.dataStore!
-  //    passDataToSomewhere(source: dataStore!, destination: &destinationDS)
-  //  } else {
-  //    let storyboard = UIStoryboard(name: "Main", bundle: nil)
-  //    let destinationVC = storyboard.instantiateViewController(withIdentifier: "SomewhereViewController") as! SomewhereViewController
-  //    var destinationDS = destinationVC.router!.dataStore!
-  //    passDataToSomewhere(source: dataStore!, destination: &destinationDS)
-  //    navigateToSomewhere(source: viewController!, destination: destinationVC)
-  //  }
-  //}
-
   // MARK: Navigation
   
-  //func navigateToSomewhere(source: FPDashboardViewController, destination: SomewhereViewController) {
-  //  source.show(destination, sender: nil)
-  //}
+  func navigateToShowWorkerList(source: FPDashboardViewController, destination: FPWorkerListViewController) {
+    source.show(destination, sender: nil)
+  }
   
   // MARK: Passing data
   
-  //func passDataToSomewhere(source: FPDashboardDataStore, destination: inout SomewhereDataStore) {
-  //  destination.name = source.name
-  //}
+  func passDataToShowWorkerList(source: FPDashboardDataStore, destination: inout FPWorkerListDataStore) {
+    destination.fpWorkers = source.fpWokers
+  }
 }

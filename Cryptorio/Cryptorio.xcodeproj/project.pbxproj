@@ -32,6 +32,12 @@
 		981D023B1F0DF3990016C2BC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 981D023A1F0DF3990016C2BC /* Assets.xcassets */; };
 		981D023E1F0DF3990016C2BC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 981D023C1F0DF3990016C2BC /* LaunchScreen.storyboard */; };
 		981D02491F0DF3990016C2BC /* CryptorioTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981D02481F0DF3990016C2BC /* CryptorioTests.swift */; };
+		981E09291F1875950002FE6B /* FPWorkerListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981E09231F1875950002FE6B /* FPWorkerListInteractor.swift */; };
+		981E092A1F1875950002FE6B /* FPWorkerListModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981E09241F1875950002FE6B /* FPWorkerListModels.swift */; };
+		981E092B1F1875950002FE6B /* FPWorkerListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981E09251F1875950002FE6B /* FPWorkerListPresenter.swift */; };
+		981E092C1F1875950002FE6B /* FPWorkerListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981E09261F1875950002FE6B /* FPWorkerListRouter.swift */; };
+		981E092D1F1875950002FE6B /* FPWorkerListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981E09271F1875950002FE6B /* FPWorkerListViewController.swift */; };
+		981E092E1F1875950002FE6B /* FPWorkerListWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981E09281F1875950002FE6B /* FPWorkerListWorker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +93,12 @@
 		981D02441F0DF3990016C2BC /* CryptorioTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CryptorioTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		981D02481F0DF3990016C2BC /* CryptorioTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptorioTests.swift; sourceTree = "<group>"; };
 		981D024A1F0DF3990016C2BC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		981E09231F1875950002FE6B /* FPWorkerListInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FPWorkerListInteractor.swift; path = Scenes/FlypoolWorkerList/FPWorkerListInteractor.swift; sourceTree = "<group>"; };
+		981E09241F1875950002FE6B /* FPWorkerListModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FPWorkerListModels.swift; path = Scenes/FlypoolWorkerList/FPWorkerListModels.swift; sourceTree = "<group>"; };
+		981E09251F1875950002FE6B /* FPWorkerListPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FPWorkerListPresenter.swift; path = Scenes/FlypoolWorkerList/FPWorkerListPresenter.swift; sourceTree = "<group>"; };
+		981E09261F1875950002FE6B /* FPWorkerListRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FPWorkerListRouter.swift; path = Scenes/FlypoolWorkerList/FPWorkerListRouter.swift; sourceTree = "<group>"; };
+		981E09271F1875950002FE6B /* FPWorkerListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FPWorkerListViewController.swift; path = Scenes/FlypoolWorkerList/FPWorkerListViewController.swift; sourceTree = "<group>"; };
+		981E09281F1875950002FE6B /* FPWorkerListWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FPWorkerListWorker.swift; path = Scenes/FlypoolWorkerList/FPWorkerListWorker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -235,10 +247,24 @@
 		981D02561F0DF7FF0016C2BC /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				981E09221F1875370002FE6B /* FlypoolWorkerList */,
 				146BB2121F14AE040010D13C /* FlypoolDashboard */,
 				146BB2131F14AE150010D13C /* NicehashDashboard */,
 			);
 			name = Scenes;
+			sourceTree = "<group>";
+		};
+		981E09221F1875370002FE6B /* FlypoolWorkerList */ = {
+			isa = PBXGroup;
+			children = (
+				981E09231F1875950002FE6B /* FPWorkerListInteractor.swift */,
+				981E09241F1875950002FE6B /* FPWorkerListModels.swift */,
+				981E09251F1875950002FE6B /* FPWorkerListPresenter.swift */,
+				981E09261F1875950002FE6B /* FPWorkerListRouter.swift */,
+				981E09271F1875950002FE6B /* FPWorkerListViewController.swift */,
+				981E09281F1875950002FE6B /* FPWorkerListWorker.swift */,
+			);
+			name = FlypoolWorkerList;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -366,15 +392,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				146BB21B1F14AF530010D13C /* FPDashboardModels.swift in Sources */,
+				981E092A1F1875950002FE6B /* FPWorkerListModels.swift in Sources */,
 				146BB21E1F14AF530010D13C /* FPDashboardViewController.swift in Sources */,
 				146BB21F1F14AF530010D13C /* FPDashboardWorker.swift in Sources */,
 				146BB21A1F14AF530010D13C /* FPDashboardInteractor.swift in Sources */,
 				981D02361F0DF3990016C2BC /* ViewController.swift in Sources */,
 				146BB2291F1507B80010D13C /* WalletIDStore.swift in Sources */,
+				981E09291F1875950002FE6B /* FPWorkerListInteractor.swift in Sources */,
+				981E092C1F1875950002FE6B /* FPWorkerListRouter.swift in Sources */,
 				146BB2251F14C6290010D13C /* JSONSerializer.swift in Sources */,
 				146BB21D1F14AF530010D13C /* FPDashboardRouter.swift in Sources */,
+				981E092E1F1875950002FE6B /* FPWorkerListWorker.swift in Sources */,
+				981E092B1F1875950002FE6B /* FPWorkerListPresenter.swift in Sources */,
 				981383201F16074F00725EE2 /* DateConverter.swift in Sources */,
 				146BB21C1F14AF530010D13C /* FPDashboardPresenter.swift in Sources */,
+				981E092D1F1875950002FE6B /* FPWorkerListViewController.swift in Sources */,
 				14BC47101F1688A8006712F0 /* HTMLParser.swift in Sources */,
 				981D02341F0DF3990016C2BC /* AppDelegate.swift in Sources */,
 				146BB2221F14AFEB0010D13C /* FPData.swift in Sources */,

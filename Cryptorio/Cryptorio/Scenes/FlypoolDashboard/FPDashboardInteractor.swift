@@ -18,13 +18,14 @@ protocol FPDashboardBusinessLogic {
 }
 
 protocol FPDashboardDataStore {
-  var fpData: FPData? { get }
+  var fpWokers: [FPHTMLWorker]? { get }
 }
 
 class FPDashboardInteractor: FPDashboardBusinessLogic, FPDashboardDataStore {
   var presenter: FPDashboardPresentationLogic?
   var worker: FPDashboardWorker?
-  var fpData: FPData?
+
+  var fpWokers: [FPHTMLWorker]?
   
   init() {
     worker = FPDashboardWorker()
@@ -55,7 +56,9 @@ class FPDashboardInteractor: FPDashboardBusinessLogic, FPDashboardDataStore {
       return
     }
     
-    guard let workers = worker?.fetchWorkers(walletID: walletID) else {
+    fpWokers = worker?.fetchWorkers(walletID: walletID)
+    
+    guard let workers = fpWokers else {
       return
     }
     
