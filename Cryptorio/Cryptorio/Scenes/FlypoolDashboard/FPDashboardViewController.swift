@@ -135,8 +135,6 @@ class FPDashboardViewController: UITableViewController, FPDashboardDisplayLogic,
   }
   
   func displayDashboardAddWalletNotification() {
-    let walletIDStore = WalletIDStore()
-    
     let alert = UIAlertController(title: "Add Flypool(Zec) WalletID", message: "", preferredStyle: .alert)
     alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
     
@@ -147,7 +145,7 @@ class FPDashboardViewController: UITableViewController, FPDashboardDisplayLogic,
         return
       }
       
-      walletIDStore.saveWalletID(walletID: walletID, pool: .flypool)
+      WalletIDStore.saveWalletID(walletID: walletID, pool: .flypool)
       
       self?.fetchDashboardData()
     }))
@@ -162,7 +160,7 @@ class FPDashboardViewController: UITableViewController, FPDashboardDisplayLogic,
     alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
     
     alert.addTextField { walletIDTextField in
-      guard let oldWalletID = walletIDStore.getWalletID(from: .flypool) else {
+      guard let oldWalletID = WalletIDStore.getWalletID(from: .flypool) else {
         return
       }
       
@@ -174,7 +172,7 @@ class FPDashboardViewController: UITableViewController, FPDashboardDisplayLogic,
         return
       }
       
-      walletIDStore.saveWalletID(walletID: walletID, pool: .flypool)
+      WalletIDStore.saveWalletID(walletID: walletID, pool: .flypool)
       
       self?.fetchDashboardData()
     }))

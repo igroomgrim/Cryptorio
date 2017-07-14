@@ -24,7 +24,6 @@ enum FPError: Error {
 class FPDashboardWorker {
   let defaultSession = URLSession(configuration: .default)
   var dataTask: URLSessionDataTask?
-  let walletIDStore = WalletIDStore()
   
   func fetchAPIData(walletID: String, completion: @escaping (FPResult<FPData>) -> Void) {
     if var urlComponents = URLComponents(string: "http://zcash.flypool.org/api/miner_new/\(walletID)") {
@@ -65,7 +64,7 @@ class FPDashboardWorker {
   }
   
   func fetchWalletID() -> String? {
-    return walletIDStore.getWalletID(from: .flypool)
+    return WalletIDStore.getWalletID(from: .flypool)
   }
   
   func fetchWorkers(walletID: String) -> [FPHTMLWorker]? {

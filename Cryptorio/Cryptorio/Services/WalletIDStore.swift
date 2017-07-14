@@ -14,7 +14,7 @@ enum WalletPool: String {
 }
 
 class WalletIDStore {
-  private func getPath() -> String {
+  private static func getPath() -> String {
     let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true) as NSArray
     let documentDirectory = paths[0] as! String
     let path = documentDirectory.appending("/Wallet.plist")
@@ -22,7 +22,7 @@ class WalletIDStore {
     return path
   }
   
-  private func getWalletDic() -> NSMutableDictionary? {
+  private static func getWalletDic() -> NSMutableDictionary? {
     let path = getPath()
     let fileManager = FileManager.default
     
@@ -42,7 +42,7 @@ class WalletIDStore {
     return resultDictionary
   }
   
-  func getWalletID(from pool: WalletPool) -> String? {
+  static func getWalletID(from pool: WalletPool) -> String? {
     guard let walletDic = getWalletDic() else {
       return nil
     }
@@ -51,7 +51,7 @@ class WalletIDStore {
     return walletID
   }
   
-  func saveWalletID(walletID: String, pool: WalletPool) {
+  static func saveWalletID(walletID: String, pool: WalletPool) {
     guard let walletDic = getWalletDic() else {
       return
     }
