@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		145431AA1F19BB82003C09FA /* FPPayoutListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145431A41F19BB82003C09FA /* FPPayoutListInteractor.swift */; };
+		145431AB1F19BB82003C09FA /* FPPayoutListModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145431A51F19BB82003C09FA /* FPPayoutListModels.swift */; };
+		145431AC1F19BB82003C09FA /* FPPayoutListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145431A61F19BB82003C09FA /* FPPayoutListPresenter.swift */; };
+		145431AD1F19BB82003C09FA /* FPPayoutListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145431A71F19BB82003C09FA /* FPPayoutListRouter.swift */; };
+		145431AE1F19BB82003C09FA /* FPPayoutListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145431A81F19BB82003C09FA /* FPPayoutListViewController.swift */; };
+		145431AF1F19BB82003C09FA /* FPPayoutListWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145431A91F19BB82003C09FA /* FPPayoutListWorker.swift */; };
 		146BB21A1F14AF530010D13C /* FPDashboardInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146BB2141F14AF530010D13C /* FPDashboardInteractor.swift */; };
 		146BB21B1F14AF530010D13C /* FPDashboardModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146BB2151F14AF530010D13C /* FPDashboardModels.swift */; };
 		146BB21C1F14AF530010D13C /* FPDashboardPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146BB2161F14AF530010D13C /* FPDashboardPresenter.swift */; };
@@ -67,6 +73,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		145431A41F19BB82003C09FA /* FPPayoutListInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FPPayoutListInteractor.swift; path = Scenes/FlypoolPayoutList/FPPayoutListInteractor.swift; sourceTree = "<group>"; };
+		145431A51F19BB82003C09FA /* FPPayoutListModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FPPayoutListModels.swift; path = Scenes/FlypoolPayoutList/FPPayoutListModels.swift; sourceTree = "<group>"; };
+		145431A61F19BB82003C09FA /* FPPayoutListPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FPPayoutListPresenter.swift; path = Scenes/FlypoolPayoutList/FPPayoutListPresenter.swift; sourceTree = "<group>"; };
+		145431A71F19BB82003C09FA /* FPPayoutListRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FPPayoutListRouter.swift; path = Scenes/FlypoolPayoutList/FPPayoutListRouter.swift; sourceTree = "<group>"; };
+		145431A81F19BB82003C09FA /* FPPayoutListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FPPayoutListViewController.swift; path = Scenes/FlypoolPayoutList/FPPayoutListViewController.swift; sourceTree = "<group>"; };
+		145431A91F19BB82003C09FA /* FPPayoutListWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FPPayoutListWorker.swift; path = Scenes/FlypoolPayoutList/FPPayoutListWorker.swift; sourceTree = "<group>"; };
 		146BB2141F14AF530010D13C /* FPDashboardInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FPDashboardInteractor.swift; path = Scenes/FlypoolDashboard/FPDashboardInteractor.swift; sourceTree = "<group>"; };
 		146BB2151F14AF530010D13C /* FPDashboardModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FPDashboardModels.swift; path = Scenes/FlypoolDashboard/FPDashboardModels.swift; sourceTree = "<group>"; };
 		146BB2161F14AF530010D13C /* FPDashboardPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FPDashboardPresenter.swift; path = Scenes/FlypoolDashboard/FPDashboardPresenter.swift; sourceTree = "<group>"; };
@@ -126,6 +138,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		145431A31F19BB36003C09FA /* FlypoolPayoutList */ = {
+			isa = PBXGroup;
+			children = (
+				145431A41F19BB82003C09FA /* FPPayoutListInteractor.swift */,
+				145431A51F19BB82003C09FA /* FPPayoutListModels.swift */,
+				145431A61F19BB82003C09FA /* FPPayoutListPresenter.swift */,
+				145431A71F19BB82003C09FA /* FPPayoutListRouter.swift */,
+				145431A81F19BB82003C09FA /* FPPayoutListViewController.swift */,
+				145431A91F19BB82003C09FA /* FPPayoutListWorker.swift */,
+			);
+			name = FlypoolPayoutList;
+			sourceTree = "<group>";
+		};
 		146BB2121F14AE040010D13C /* FlypoolDashboard */ = {
 			isa = PBXGroup;
 			children = (
@@ -250,6 +275,7 @@
 		981D02561F0DF7FF0016C2BC /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				145431A31F19BB36003C09FA /* FlypoolPayoutList */,
 				981E09221F1875370002FE6B /* FlypoolWorkerList */,
 				146BB2121F14AE040010D13C /* FlypoolDashboard */,
 				146BB2131F14AE150010D13C /* NicehashDashboard */,
@@ -403,21 +429,27 @@
 			buildActionMask = 2147483647;
 			files = (
 				146BB21B1F14AF530010D13C /* FPDashboardModels.swift in Sources */,
+				145431AB1F19BB82003C09FA /* FPPayoutListModels.swift in Sources */,
 				981E092A1F1875950002FE6B /* FPWorkerListModels.swift in Sources */,
+				145431AA1F19BB82003C09FA /* FPPayoutListInteractor.swift in Sources */,
 				146BB21E1F14AF530010D13C /* FPDashboardViewController.swift in Sources */,
 				146BB21F1F14AF530010D13C /* FPDashboardWorker.swift in Sources */,
 				146BB21A1F14AF530010D13C /* FPDashboardInteractor.swift in Sources */,
 				981D02361F0DF3990016C2BC /* ViewController.swift in Sources */,
+				145431AD1F19BB82003C09FA /* FPPayoutListRouter.swift in Sources */,
 				146BB2291F1507B80010D13C /* WalletIDStore.swift in Sources */,
 				981E09291F1875950002FE6B /* FPWorkerListInteractor.swift in Sources */,
 				981E092C1F1875950002FE6B /* FPWorkerListRouter.swift in Sources */,
 				146BB2251F14C6290010D13C /* JSONSerializer.swift in Sources */,
 				146BB21D1F14AF530010D13C /* FPDashboardRouter.swift in Sources */,
 				981E092E1F1875950002FE6B /* FPWorkerListWorker.swift in Sources */,
+				145431AC1F19BB82003C09FA /* FPPayoutListPresenter.swift in Sources */,
 				981E092B1F1875950002FE6B /* FPWorkerListPresenter.swift in Sources */,
 				981383201F16074F00725EE2 /* DateConverter.swift in Sources */,
 				146BB21C1F14AF530010D13C /* FPDashboardPresenter.swift in Sources */,
 				981E092D1F1875950002FE6B /* FPWorkerListViewController.swift in Sources */,
+				145431AE1F19BB82003C09FA /* FPPayoutListViewController.swift in Sources */,
+				145431AF1F19BB82003C09FA /* FPPayoutListWorker.swift in Sources */,
 				14BC47101F1688A8006712F0 /* HTMLParser.swift in Sources */,
 				981E09311F188EEA0002FE6B /* FPWorkerTableViewCell.swift in Sources */,
 				981D02341F0DF3990016C2BC /* AppDelegate.swift in Sources */,
