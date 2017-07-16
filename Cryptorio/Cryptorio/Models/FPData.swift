@@ -180,3 +180,30 @@ struct FPHTMLWorker {
     self.invalidShares = invalidShares
   }
 }
+
+struct FPHTMLPayout {
+  let paidOn: String
+  let fromBlock: String
+  let toBlock: String
+  let durationHour: String
+  let amount: String
+  let txHash: String
+  
+  init?(payout: [String?]) {
+    guard let paidOn = payout[0],
+      let fromBlock = payout[1],
+      let toBlock = payout[2],
+      let durationHour = payout[3],
+      let amount = payout[4],
+      let txHash = payout[5] else {
+        return nil
+    }
+    
+    self.paidOn = paidOn
+    self.fromBlock = fromBlock
+    self.toBlock = toBlock
+    self.durationHour = durationHour
+    self.amount = amount
+    self.txHash = txHash
+  }
+}
