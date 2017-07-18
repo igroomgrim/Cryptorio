@@ -19,7 +19,7 @@ class FPDashboardWorker {
   func fetchAPIData(walletID: String, completion: @escaping (FPResult<FPData>) -> Void) {
     
     guard let urlComponents = URLComponents(string: "http://zcash.flypool.org/api/miner_new/\(walletID)") else {
-      let fpError = FPError.CannotFetch("Can't parse URLs based on RFC 3986 and to construct URLs from this url")
+      let fpError = FPError.api("Can't parse URLs based on RFC 3986 and to construct URLs from this url")
       let errorResult = FPResult<FPData>.Failure(error: fpError)
       DispatchQueue.main.async {
         completion(errorResult)
@@ -29,7 +29,7 @@ class FPDashboardWorker {
     }
     
     guard let url = urlComponents.url else {
-      let fpError = FPError.CannotFetch("URL from urlComponents is empty")
+      let fpError = FPError.api("URL from urlComponents is empty")
       let errorResult = FPResult<FPData>.Failure(error: fpError)
       DispatchQueue.main.async {
         completion(errorResult)
@@ -42,7 +42,7 @@ class FPDashboardWorker {
       defer { self.dataTask = nil }
         
       if let err = error {
-        let fpError = FPError.CannotFetch(err.localizedDescription)
+        let fpError = FPError.other(err.localizedDescription)
         let errorResult = FPResult<FPData>.Failure(error: fpError)
         DispatchQueue.main.async {
           completion(errorResult)
@@ -52,7 +52,7 @@ class FPDashboardWorker {
       }
         
       guard let data = data else {
-        let error = FPError.CannotFetch("Reponse data is empty. We can't fetch data from Flypool API")
+        let error = FPError.api("Reponse data is empty. We can't fetch data from Flypool API")
         let errorResult = FPResult<FPData>.Failure(error: error)
         DispatchQueue.main.async {
           completion(errorResult)
@@ -62,7 +62,7 @@ class FPDashboardWorker {
       }
         
       guard let httpResponse = response as? HTTPURLResponse else {
-        let error = FPError.CannotFetch("Can't fetch response data from Flypool API")
+        let error = FPError.api("Can't fetch response data from Flypool API")
         let errorResult = FPResult<FPData>.Failure(error: error)
         DispatchQueue.main.async {
           completion(errorResult)
@@ -74,7 +74,7 @@ class FPDashboardWorker {
       switch httpResponse.statusCode {
         case 200..<300:
           guard let fpData = FPData(data: data) else {
-            let error = FPError.CannotFetch("Can't parse data from Flypool API")
+            let error = FPError.other("Can't parse data from Flypool API")
             let errorResult = FPResult<FPData>.Failure(error: error)
             DispatchQueue.main.async {
               completion(errorResult)
@@ -89,14 +89,14 @@ class FPDashboardWorker {
           }
             
         case 400..<600:
-          let error = FPError.CannotFetch(httpResponse.debugDescription)
+          let error = FPError.api(httpResponse.debugDescription)
           let errorResult = FPResult<FPData>.Failure(error: error)
           DispatchQueue.main.async {
             completion(errorResult)
           }
             
         default:
-          let error = FPError.CannotFetch("unrecognized HTTP status code: \(httpResponse.statusCode)")
+          let error = FPError.api("unrecognized HTTP status code: \(httpResponse.statusCode)")
           let errorResult = FPResult<FPData>.Failure(error: error)
           DispatchQueue.main.async {
             completion(errorResult)

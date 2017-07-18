@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1417C8EF1F1D041A008CF9AF /* FPObjectProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1417C8EE1F1D041A008CF9AF /* FPObjectProtocol.swift */; };
+		1417C8F11F1E808B008CF9AF /* FPError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1417C8F01F1E808B008CF9AF /* FPError.swift */; };
+		1417C8F31F1E80A6008CF9AF /* FPResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1417C8F21F1E80A6008CF9AF /* FPResult.swift */; };
+		1417C8F51F1E8399008CF9AF /* FPModelFromJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1417C8F41F1E8399008CF9AF /* FPModelFromJSON.swift */; };
+		1417C8F71F1E83EE008CF9AF /* FPModelFromHTML.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1417C8F61F1E83EE008CF9AF /* FPModelFromHTML.swift */; };
 		145431AA1F19BB82003C09FA /* FPPayoutListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145431A41F19BB82003C09FA /* FPPayoutListInteractor.swift */; };
 		145431AB1F19BB82003C09FA /* FPPayoutListModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145431A51F19BB82003C09FA /* FPPayoutListModels.swift */; };
 		145431AC1F19BB82003C09FA /* FPPayoutListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145431A61F19BB82003C09FA /* FPPayoutListPresenter.swift */; };
@@ -19,7 +24,6 @@
 		146BB21D1F14AF530010D13C /* FPDashboardRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146BB2171F14AF530010D13C /* FPDashboardRouter.swift */; };
 		146BB21E1F14AF530010D13C /* FPDashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146BB2181F14AF530010D13C /* FPDashboardViewController.swift */; };
 		146BB21F1F14AF530010D13C /* FPDashboardWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146BB2191F14AF530010D13C /* FPDashboardWorker.swift */; };
-		146BB2221F14AFEB0010D13C /* FPData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146BB2211F14AFEB0010D13C /* FPData.swift */; };
 		146BB2251F14C6290010D13C /* JSONSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146BB2241F14C6290010D13C /* JSONSerializer.swift */; };
 		146BB2291F1507B80010D13C /* WalletIDStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146BB2281F1507B80010D13C /* WalletIDStore.swift */; };
 		146BB22B1F150F8F0010D13C /* Wallet.plist in Resources */ = {isa = PBXBuildFile; fileRef = 146BB22A1F150F8F0010D13C /* Wallet.plist */; };
@@ -73,6 +77,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1417C8EE1F1D041A008CF9AF /* FPObjectProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FPObjectProtocol.swift; path = Models/Flypool/FPObjectProtocol.swift; sourceTree = "<group>"; };
+		1417C8F01F1E808B008CF9AF /* FPError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FPError.swift; path = Models/Flypool/FPError.swift; sourceTree = "<group>"; };
+		1417C8F21F1E80A6008CF9AF /* FPResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FPResult.swift; path = Models/Flypool/FPResult.swift; sourceTree = "<group>"; };
+		1417C8F41F1E8399008CF9AF /* FPModelFromJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FPModelFromJSON.swift; path = Models/Flypool/FPModelFromJSON.swift; sourceTree = "<group>"; };
+		1417C8F61F1E83EE008CF9AF /* FPModelFromHTML.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FPModelFromHTML.swift; path = Models/Flypool/FPModelFromHTML.swift; sourceTree = "<group>"; };
 		145431A41F19BB82003C09FA /* FPPayoutListInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FPPayoutListInteractor.swift; path = Scenes/FlypoolPayoutList/FPPayoutListInteractor.swift; sourceTree = "<group>"; };
 		145431A51F19BB82003C09FA /* FPPayoutListModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FPPayoutListModels.swift; path = Scenes/FlypoolPayoutList/FPPayoutListModels.swift; sourceTree = "<group>"; };
 		145431A61F19BB82003C09FA /* FPPayoutListPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FPPayoutListPresenter.swift; path = Scenes/FlypoolPayoutList/FPPayoutListPresenter.swift; sourceTree = "<group>"; };
@@ -85,7 +94,6 @@
 		146BB2171F14AF530010D13C /* FPDashboardRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FPDashboardRouter.swift; path = Scenes/FlypoolDashboard/FPDashboardRouter.swift; sourceTree = "<group>"; };
 		146BB2181F14AF530010D13C /* FPDashboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FPDashboardViewController.swift; path = Scenes/FlypoolDashboard/FPDashboardViewController.swift; sourceTree = "<group>"; };
 		146BB2191F14AF530010D13C /* FPDashboardWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FPDashboardWorker.swift; path = Scenes/FlypoolDashboard/FPDashboardWorker.swift; sourceTree = "<group>"; };
-		146BB2211F14AFEB0010D13C /* FPData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FPData.swift; path = Models/FPData.swift; sourceTree = "<group>"; };
 		146BB2241F14C6290010D13C /* JSONSerializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JSONSerializer.swift; path = Services/JSONSerializer.swift; sourceTree = "<group>"; };
 		146BB2281F1507B80010D13C /* WalletIDStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WalletIDStore.swift; path = Services/WalletIDStore.swift; sourceTree = "<group>"; };
 		146BB22A1F150F8F0010D13C /* Wallet.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Wallet.plist; sourceTree = "<group>"; };
@@ -138,6 +146,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1417C8ED1F1D016E008CF9AF /* Flypool */ = {
+			isa = PBXGroup;
+			children = (
+				1417C8EE1F1D041A008CF9AF /* FPObjectProtocol.swift */,
+				1417C8F01F1E808B008CF9AF /* FPError.swift */,
+				1417C8F21F1E80A6008CF9AF /* FPResult.swift */,
+				1417C8F41F1E8399008CF9AF /* FPModelFromJSON.swift */,
+				1417C8F61F1E83EE008CF9AF /* FPModelFromHTML.swift */,
+			);
+			name = Flypool;
+			sourceTree = "<group>";
+		};
 		145431A31F19BB36003C09FA /* FlypoolPayoutList */ = {
 			isa = PBXGroup;
 			children = (
@@ -174,7 +194,7 @@
 		146BB2201F14AF700010D13C /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				146BB2211F14AFEB0010D13C /* FPData.swift */,
+				1417C8ED1F1D016E008CF9AF /* Flypool */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -435,8 +455,11 @@
 				146BB21E1F14AF530010D13C /* FPDashboardViewController.swift in Sources */,
 				146BB21F1F14AF530010D13C /* FPDashboardWorker.swift in Sources */,
 				146BB21A1F14AF530010D13C /* FPDashboardInteractor.swift in Sources */,
+				1417C8F51F1E8399008CF9AF /* FPModelFromJSON.swift in Sources */,
 				981D02361F0DF3990016C2BC /* ViewController.swift in Sources */,
 				145431AD1F19BB82003C09FA /* FPPayoutListRouter.swift in Sources */,
+				1417C8F11F1E808B008CF9AF /* FPError.swift in Sources */,
+				1417C8F71F1E83EE008CF9AF /* FPModelFromHTML.swift in Sources */,
 				146BB2291F1507B80010D13C /* WalletIDStore.swift in Sources */,
 				981E09291F1875950002FE6B /* FPWorkerListInteractor.swift in Sources */,
 				981E092C1F1875950002FE6B /* FPWorkerListRouter.swift in Sources */,
@@ -450,10 +473,11 @@
 				981E092D1F1875950002FE6B /* FPWorkerListViewController.swift in Sources */,
 				145431AE1F19BB82003C09FA /* FPPayoutListViewController.swift in Sources */,
 				145431AF1F19BB82003C09FA /* FPPayoutListWorker.swift in Sources */,
+				1417C8F31F1E80A6008CF9AF /* FPResult.swift in Sources */,
+				1417C8EF1F1D041A008CF9AF /* FPObjectProtocol.swift in Sources */,
 				14BC47101F1688A8006712F0 /* HTMLParser.swift in Sources */,
 				981E09311F188EEA0002FE6B /* FPWorkerTableViewCell.swift in Sources */,
 				981D02341F0DF3990016C2BC /* AppDelegate.swift in Sources */,
-				146BB2221F14AFEB0010D13C /* FPData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

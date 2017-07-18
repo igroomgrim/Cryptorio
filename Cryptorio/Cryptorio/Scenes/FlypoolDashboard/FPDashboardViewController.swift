@@ -153,9 +153,9 @@ class FPDashboardViewController: UITableViewController, FPDashboardDisplayLogic,
     var errorMessageOnDisplay = ""
     
     switch error {
-      case .CannotFetch(let errorMessage):
+      case .api(let errorMessage):
         errorMessageOnDisplay = errorMessage
-      case .Other(let errorMessage):
+      case .other(let errorMessage):
         errorMessageOnDisplay = errorMessage
     }
     

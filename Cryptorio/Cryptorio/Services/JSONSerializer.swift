@@ -12,6 +12,7 @@ typealias JSON = [String: Any]
 
 protocol Decodable {
   init?(json: JSON)
+  init?(html: [String?])
 }
 
 extension Decodable {

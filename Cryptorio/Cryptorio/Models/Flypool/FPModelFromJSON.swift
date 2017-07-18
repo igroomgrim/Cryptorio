@@ -1,24 +1,14 @@
 //
-//  FPData.swift
+//  FPModelFromJSON.swift
 //  Cryptorio
 //
-//  Created by Anak Mirasing on 7/11/2560 BE.
+//  Created by Anak Mirasing on 7/19/2560 BE.
 //  Copyright © 2560 iGROOMGRiM. All rights reserved.
 //
 
 import Foundation
 
-enum FPResult<U> {
-  case Success(result: U)
-  case Failure(error: FPError)
-}
-
-enum FPError: Error {
-  case CannotFetch(String)
-  case Other(String)
-}
-
-struct FPData: Decodable {
+struct FPData: FPObject {
   let address: String
   let hashRate: String
   
@@ -31,15 +21,19 @@ struct FPData: Decodable {
   let payouts: [FPPayout]?
   let workers: [FPWorker]?
   
+  init?(html: HTML) {
+    return nil
+  }
+  
   init?(json: JSON) {
     guard let address = json["address"] as? String,
-    let hashRate = json["hashRate"] as? String,
-    let ethPerMin = json["ethPerMin"] as? Double,
-    let usdPerMin = json["usdPerMin"] as? Double,
-    let btcPerMin = json["btcPerMin"] as? Double,
-    let avgHashrate = json["avgHashrate"] as? Double,
-    let unpaid = json["unpaid"] as? Double else {
-      return nil
+      let hashRate = json["hashRate"] as? String,
+      let ethPerMin = json["ethPerMin"] as? Double,
+      let usdPerMin = json["usdPerMin"] as? Double,
+      let btcPerMin = json["btcPerMin"] as? Double,
+      let avgHashrate = json["avgHashrate"] as? Double,
+      let unpaid = json["unpaid"] as? Double else {
+        return nil
     }
     
     self.address = address
@@ -49,7 +43,7 @@ struct FPData: Decodable {
     self.btcPerMin = btcPerMin
     self.avgHashrate = avgHashrate/1000
     self.unpaid = unpaid/100_000_000
-
+    
     if let rounds = (json["rounds"] as? [JSON])?.flatMap(FPRound.init) {
       self.rounds = rounds
     } else {
@@ -70,7 +64,7 @@ struct FPData: Decodable {
   }
 }
 
-struct FPPayout {
+struct FPPayout: FPObject {
   let id: Double
   let miner: String
   let start: Double
@@ -78,6 +72,10 @@ struct FPPayout {
   let amount: Double
   let txHash: String
   let paidOn: Date
+  
+  init?(html: [String?]) {
+    return nil
+  }
   
   init?(json: JSON) {
     guard let id = json["id"] as? Double,
@@ -100,7 +98,7 @@ struct FPPayout {
   }
 }
 
-struct FPWorker {
+struct FPWorker: FPObject {
   let workerName: String
   let hashRate: String
   let validShares: Int
@@ -108,6 +106,10 @@ struct FPWorker {
   let workerLastSubmitTime: Int
   let staleShares: Int
   let invalidShareRatio: Double
+  
+  init?(html: HTML) {
+    return nil
+  }
   
   init?(json: JSON) {
     guard let workerName = json["worker"] as? String,
@@ -130,7 +132,7 @@ struct FPWorker {
   }
 }
 
-struct FPRound {
+struct FPRound: FPObject {
   let id: Double
   let miner: String
   let block: Double
@@ -138,14 +140,18 @@ struct FPRound {
   let amount: Double
   let processed: Int
   
+  init?(html: HTML) {
+    return nil
+  }
+  
   init?(json: JSON) {
     guard let id = json["id"] as? Double,
-    let miner = json["miner"] as? String,
-    let block = json["block"] as? Double,
-    let work = json["work"] as? Double,
-    let amount = json["amount"] as? Double,
-    let processed = json["processed"] as? Int else {
-      return nil
+      let miner = json["miner"] as? String,
+      let block = json["block"] as? Double,
+      let work = json["work"] as? Double,
+      let amount = json["amount"] as? Double,
+      let processed = json["processed"] as? Int else {
+        return nil
     }
     
     self.id = id
@@ -154,56 +160,5 @@ struct FPRound {
     self.work = work
     self.amount = amount
     self.processed = processed
-  }
-}
-
-struct FPHTMLWorker {
-  let workerName: String
-  let currentHashrate: String
-  let avgHashrate: String
-  let validShares: String
-  let invalidShares: String
-  
-  init?(wk: [String?]) {
-    guard let workerName = wk[0],
-      let currentHashrate = wk[1],
-      let avgHashrate = wk[2],
-      let validShares = wk[3],
-      let invalidShares = wk[4] else {
-        return nil
-    }
-    
-    self.workerName = workerName
-    self.currentHashrate = currentHashrate
-    self.avgHashrate = avgHashrate
-    self.validShares = validShares
-    self.invalidShares = invalidShares
-  }
-}
-
-struct FPHTMLPayout {
-  let paidOn: String
-  let fromBlock: String
-  let toBlock: String
-  let durationHour: String
-  let amount: String
-  let txHash: String
-  
-  init?(payout: [String?]) {
-    guard let paidOn = payout[0],
-      let fromBlock = payout[1],
-      let toBlock = payout[2],
-      let durationHour = payout[3],
-      let amount = payout[4],
-      let txHash = payout[5] else {
-        return nil
-    }
-    
-    self.paidOn = paidOn
-    self.fromBlock = fromBlock
-    self.toBlock = toBlock
-    self.durationHour = durationHour
-    self.amount = amount
-    self.txHash = txHash
   }
 }
