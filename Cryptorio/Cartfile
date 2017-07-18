@@ -2,3 +2,5 @@
 
 github "tid-kijyun/Kanna" ~> 2.1.0
 github "ninjaprox/NVActivityIndicatorView"
+github "ReactiveX/RxSwift" ~> 3.0.0
+github "RxSwiftCommunity/RxDataSources" ~> 1.0.0

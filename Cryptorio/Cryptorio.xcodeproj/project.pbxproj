@@ -12,6 +12,12 @@
 		1417C8F31F1E80A6008CF9AF /* FPResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1417C8F21F1E80A6008CF9AF /* FPResult.swift */; };
 		1417C8F51F1E8399008CF9AF /* FPModelFromJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1417C8F41F1E8399008CF9AF /* FPModelFromJSON.swift */; };
 		1417C8F71F1E83EE008CF9AF /* FPModelFromHTML.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1417C8F61F1E83EE008CF9AF /* FPModelFromHTML.swift */; };
+		1417C8FB1F1E8D51008CF9AF /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1417C8F81F1E8D51008CF9AF /* RxCocoa.framework */; };
+		1417C8FC1F1E8D51008CF9AF /* RxDataSources.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1417C8F91F1E8D51008CF9AF /* RxDataSources.framework */; };
+		1417C8FD1F1E8D51008CF9AF /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1417C8FA1F1E8D51008CF9AF /* RxSwift.framework */; };
+		1417C8FF1F1E8D59008CF9AF /* RxCocoa.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1417C8F81F1E8D51008CF9AF /* RxCocoa.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		1417C9011F1E8D59008CF9AF /* RxDataSources.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1417C8F91F1E8D51008CF9AF /* RxDataSources.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		1417C9031F1E8D59008CF9AF /* RxSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1417C8FA1F1E8D51008CF9AF /* RxSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		145431AA1F19BB82003C09FA /* FPPayoutListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145431A41F19BB82003C09FA /* FPPayoutListInteractor.swift */; };
 		145431AB1F19BB82003C09FA /* FPPayoutListModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145431A51F19BB82003C09FA /* FPPayoutListModels.swift */; };
 		145431AC1F19BB82003C09FA /* FPPayoutListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145431A61F19BB82003C09FA /* FPPayoutListPresenter.swift */; };
@@ -68,8 +74,11 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				1417C9031F1E8D59008CF9AF /* RxSwift.framework in Embed Frameworks */,
+				1417C8FF1F1E8D59008CF9AF /* RxCocoa.framework in Embed Frameworks */,
 				1495B8111F17EA200002678D /* NVActivityIndicatorView.framework in Embed Frameworks */,
 				14BC470D1F168818006712F0 /* Kanna.framework in Embed Frameworks */,
+				1417C9011F1E8D59008CF9AF /* RxDataSources.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -82,6 +91,9 @@
 		1417C8F21F1E80A6008CF9AF /* FPResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FPResult.swift; path = Models/Flypool/FPResult.swift; sourceTree = "<group>"; };
 		1417C8F41F1E8399008CF9AF /* FPModelFromJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FPModelFromJSON.swift; path = Models/Flypool/FPModelFromJSON.swift; sourceTree = "<group>"; };
 		1417C8F61F1E83EE008CF9AF /* FPModelFromHTML.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FPModelFromHTML.swift; path = Models/Flypool/FPModelFromHTML.swift; sourceTree = "<group>"; };
+		1417C8F81F1E8D51008CF9AF /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
+		1417C8F91F1E8D51008CF9AF /* RxDataSources.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxDataSources.framework; path = Carthage/Build/iOS/RxDataSources.framework; sourceTree = "<group>"; };
+		1417C8FA1F1E8D51008CF9AF /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
 		145431A41F19BB82003C09FA /* FPPayoutListInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FPPayoutListInteractor.swift; path = Scenes/FlypoolPayoutList/FPPayoutListInteractor.swift; sourceTree = "<group>"; };
 		145431A51F19BB82003C09FA /* FPPayoutListModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FPPayoutListModels.swift; path = Scenes/FlypoolPayoutList/FPPayoutListModels.swift; sourceTree = "<group>"; };
 		145431A61F19BB82003C09FA /* FPPayoutListPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FPPayoutListPresenter.swift; path = Scenes/FlypoolPayoutList/FPPayoutListPresenter.swift; sourceTree = "<group>"; };
@@ -128,6 +140,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1417C8FB1F1E8D51008CF9AF /* RxCocoa.framework in Frameworks */,
+				1417C8FC1F1E8D51008CF9AF /* RxDataSources.framework in Frameworks */,
+				1417C8FD1F1E8D51008CF9AF /* RxSwift.framework in Frameworks */,
 				1495B81C1F17F35D0002678D /* Answers.framework in Frameworks */,
 				1495B80F1F17EA1A0002678D /* NVActivityIndicatorView.framework in Frameworks */,
 				1495B8181F17EEF40002678D /* Crashlytics.framework in Frameworks */,
@@ -213,6 +228,9 @@
 		14BC47091F1687F6006712F0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1417C8F81F1E8D51008CF9AF /* RxCocoa.framework */,
+				1417C8F91F1E8D51008CF9AF /* RxDataSources.framework */,
+				1417C8FA1F1E8D51008CF9AF /* RxSwift.framework */,
 				1495B81B1F17F35D0002678D /* Answers.framework */,
 				1495B8161F17EEF40002678D /* Crashlytics.framework */,
 				1495B8171F17EEF40002678D /* Fabric.framework */,
