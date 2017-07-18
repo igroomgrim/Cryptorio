@@ -18,6 +18,7 @@
 		1417C8FF1F1E8D59008CF9AF /* RxCocoa.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1417C8F81F1E8D51008CF9AF /* RxCocoa.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1417C9011F1E8D59008CF9AF /* RxDataSources.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1417C8F91F1E8D51008CF9AF /* RxDataSources.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1417C9031F1E8D59008CF9AF /* RxSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1417C8FA1F1E8D51008CF9AF /* RxSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		1417C9081F1E90AB008CF9AF /* APIEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1417C9071F1E90AB008CF9AF /* APIEndpoint.swift */; };
 		145431AA1F19BB82003C09FA /* FPPayoutListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145431A41F19BB82003C09FA /* FPPayoutListInteractor.swift */; };
 		145431AB1F19BB82003C09FA /* FPPayoutListModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145431A51F19BB82003C09FA /* FPPayoutListModels.swift */; };
 		145431AC1F19BB82003C09FA /* FPPayoutListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145431A61F19BB82003C09FA /* FPPayoutListPresenter.swift */; };
@@ -94,6 +95,7 @@
 		1417C8F81F1E8D51008CF9AF /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
 		1417C8F91F1E8D51008CF9AF /* RxDataSources.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxDataSources.framework; path = Carthage/Build/iOS/RxDataSources.framework; sourceTree = "<group>"; };
 		1417C8FA1F1E8D51008CF9AF /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
+		1417C9071F1E90AB008CF9AF /* APIEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APIEndpoint.swift; path = Services/API/APIEndpoint.swift; sourceTree = "<group>"; };
 		145431A41F19BB82003C09FA /* FPPayoutListInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FPPayoutListInteractor.swift; path = Scenes/FlypoolPayoutList/FPPayoutListInteractor.swift; sourceTree = "<group>"; };
 		145431A51F19BB82003C09FA /* FPPayoutListModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FPPayoutListModels.swift; path = Scenes/FlypoolPayoutList/FPPayoutListModels.swift; sourceTree = "<group>"; };
 		145431A61F19BB82003C09FA /* FPPayoutListPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FPPayoutListPresenter.swift; path = Scenes/FlypoolPayoutList/FPPayoutListPresenter.swift; sourceTree = "<group>"; };
@@ -173,6 +175,14 @@
 			name = Flypool;
 			sourceTree = "<group>";
 		};
+		1417C9041F1E8FFE008CF9AF /* API */ = {
+			isa = PBXGroup;
+			children = (
+				1417C9071F1E90AB008CF9AF /* APIEndpoint.swift */,
+			);
+			name = API;
+			sourceTree = "<group>";
+		};
 		145431A31F19BB36003C09FA /* FlypoolPayoutList */ = {
 			isa = PBXGroup;
 			children = (
@@ -217,6 +227,7 @@
 		146BB2231F14C6080010D13C /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				1417C9041F1E8FFE008CF9AF /* API */,
 				146BB2241F14C6290010D13C /* JSONSerializer.swift */,
 				146BB2281F1507B80010D13C /* WalletIDStore.swift */,
 				9813831F1F16074F00725EE2 /* DateConverter.swift */,
@@ -493,6 +504,7 @@
 				145431AF1F19BB82003C09FA /* FPPayoutListWorker.swift in Sources */,
 				1417C8F31F1E80A6008CF9AF /* FPResult.swift in Sources */,
 				1417C8EF1F1D041A008CF9AF /* FPObjectProtocol.swift in Sources */,
+				1417C9081F1E90AB008CF9AF /* APIEndpoint.swift in Sources */,
 				14BC47101F1688A8006712F0 /* HTMLParser.swift in Sources */,
 				981E09311F188EEA0002FE6B /* FPWorkerTableViewCell.swift in Sources */,
 				981D02341F0DF3990016C2BC /* AppDelegate.swift in Sources */,
