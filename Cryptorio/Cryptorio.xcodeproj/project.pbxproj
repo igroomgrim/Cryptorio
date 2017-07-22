@@ -42,6 +42,12 @@
 		14BC470B1F1687F7006712F0 /* Kanna.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14BC470A1F1687F7006712F0 /* Kanna.framework */; };
 		14BC470D1F168818006712F0 /* Kanna.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 14BC470A1F1687F7006712F0 /* Kanna.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		14BC47101F1688A8006712F0 /* HTMLParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14BC470F1F1688A8006712F0 /* HTMLParser.swift */; };
+		14FBBEB81F22DE8900183B7C /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14FBBEB71F22DE8900183B7C /* APIClient.swift */; };
+		14FBBEBA1F22DEA500183B7C /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14FBBEB91F22DEA500183B7C /* APIRequest.swift */; };
+		14FBBEBC1F22DF7800183B7C /* Failable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14FBBEBB1F22DF7800183B7C /* Failable.swift */; };
+		14FBBEBE1F22E75E00183B7C /* ServiceCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14FBBEBD1F22E75E00183B7C /* ServiceCall.swift */; };
+		14FBBEC01F2387FA00183B7C /* HTMLSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14FBBEBF1F2387FA00183B7C /* HTMLSerializer.swift */; };
+		14FBBEC41F23A0EF00183B7C /* Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14FBBEC31F23A0EF00183B7C /* Decodable.swift */; };
 		981383201F16074F00725EE2 /* DateConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9813831F1F16074F00725EE2 /* DateConverter.swift */; };
 		981D02341F0DF3990016C2BC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981D02331F0DF3990016C2BC /* AppDelegate.swift */; };
 		981D02361F0DF3990016C2BC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981D02351F0DF3990016C2BC /* ViewController.swift */; };
@@ -117,6 +123,12 @@
 		1495B81B1F17F35D0002678D /* Answers.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Answers.framework; sourceTree = "<group>"; };
 		14BC470A1F1687F7006712F0 /* Kanna.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kanna.framework; path = Carthage/Build/iOS/Kanna.framework; sourceTree = "<group>"; };
 		14BC470F1F1688A8006712F0 /* HTMLParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HTMLParser.swift; path = Services/HTMLParser.swift; sourceTree = "<group>"; };
+		14FBBEB71F22DE8900183B7C /* APIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APIClient.swift; path = Services/API/APIClient.swift; sourceTree = "<group>"; };
+		14FBBEB91F22DEA500183B7C /* APIRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = APIRequest.swift; path = Services/API/APIRequest.swift; sourceTree = "<group>"; };
+		14FBBEBB1F22DF7800183B7C /* Failable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Failable.swift; path = Models/Failable.swift; sourceTree = "<group>"; };
+		14FBBEBD1F22E75E00183B7C /* ServiceCall.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ServiceCall.swift; path = Services/API/ServiceCall.swift; sourceTree = "<group>"; };
+		14FBBEBF1F2387FA00183B7C /* HTMLSerializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HTMLSerializer.swift; path = Services/HTMLSerializer.swift; sourceTree = "<group>"; };
+		14FBBEC31F23A0EF00183B7C /* Decodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Decodable.swift; path = Services/Decodable.swift; sourceTree = "<group>"; };
 		9813831F1F16074F00725EE2 /* DateConverter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DateConverter.swift; path = Services/DateConverter.swift; sourceTree = "<group>"; };
 		981D02301F0DF3990016C2BC /* Cryptorio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cryptorio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		981D02331F0DF3990016C2BC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -179,6 +191,9 @@
 			isa = PBXGroup;
 			children = (
 				1417C9071F1E90AB008CF9AF /* APIEndpoint.swift */,
+				14FBBEB71F22DE8900183B7C /* APIClient.swift */,
+				14FBBEB91F22DEA500183B7C /* APIRequest.swift */,
+				14FBBEBD1F22E75E00183B7C /* ServiceCall.swift */,
 			);
 			name = API;
 			sourceTree = "<group>";
@@ -219,6 +234,7 @@
 		146BB2201F14AF700010D13C /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				14FBBEBB1F22DF7800183B7C /* Failable.swift */,
 				1417C8ED1F1D016E008CF9AF /* Flypool */,
 			);
 			name = Models;
@@ -229,9 +245,11 @@
 			children = (
 				1417C9041F1E8FFE008CF9AF /* API */,
 				146BB2241F14C6290010D13C /* JSONSerializer.swift */,
+				14FBBEBF1F2387FA00183B7C /* HTMLSerializer.swift */,
 				146BB2281F1507B80010D13C /* WalletIDStore.swift */,
 				9813831F1F16074F00725EE2 /* DateConverter.swift */,
 				14BC470F1F1688A8006712F0 /* HTMLParser.swift */,
+				14FBBEC31F23A0EF00183B7C /* Decodable.swift */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -479,18 +497,23 @@
 			files = (
 				146BB21B1F14AF530010D13C /* FPDashboardModels.swift in Sources */,
 				145431AB1F19BB82003C09FA /* FPPayoutListModels.swift in Sources */,
+				14FBBEBE1F22E75E00183B7C /* ServiceCall.swift in Sources */,
 				981E092A1F1875950002FE6B /* FPWorkerListModels.swift in Sources */,
+				14FBBEB81F22DE8900183B7C /* APIClient.swift in Sources */,
 				145431AA1F19BB82003C09FA /* FPPayoutListInteractor.swift in Sources */,
 				146BB21E1F14AF530010D13C /* FPDashboardViewController.swift in Sources */,
 				146BB21F1F14AF530010D13C /* FPDashboardWorker.swift in Sources */,
+				14FBBEBA1F22DEA500183B7C /* APIRequest.swift in Sources */,
 				146BB21A1F14AF530010D13C /* FPDashboardInteractor.swift in Sources */,
 				1417C8F51F1E8399008CF9AF /* FPModelFromJSON.swift in Sources */,
 				981D02361F0DF3990016C2BC /* ViewController.swift in Sources */,
+				14FBBEBC1F22DF7800183B7C /* Failable.swift in Sources */,
 				145431AD1F19BB82003C09FA /* FPPayoutListRouter.swift in Sources */,
 				1417C8F11F1E808B008CF9AF /* FPError.swift in Sources */,
 				1417C8F71F1E83EE008CF9AF /* FPModelFromHTML.swift in Sources */,
 				146BB2291F1507B80010D13C /* WalletIDStore.swift in Sources */,
 				981E09291F1875950002FE6B /* FPWorkerListInteractor.swift in Sources */,
+				14FBBEC01F2387FA00183B7C /* HTMLSerializer.swift in Sources */,
 				981E092C1F1875950002FE6B /* FPWorkerListRouter.swift in Sources */,
 				146BB2251F14C6290010D13C /* JSONSerializer.swift in Sources */,
 				146BB21D1F14AF530010D13C /* FPDashboardRouter.swift in Sources */,
@@ -501,6 +524,7 @@
 				146BB21C1F14AF530010D13C /* FPDashboardPresenter.swift in Sources */,
 				981E092D1F1875950002FE6B /* FPWorkerListViewController.swift in Sources */,
 				145431AE1F19BB82003C09FA /* FPPayoutListViewController.swift in Sources */,
+				14FBBEC41F23A0EF00183B7C /* Decodable.swift in Sources */,
 				145431AF1F19BB82003C09FA /* FPPayoutListWorker.swift in Sources */,
 				1417C8F31F1E80A6008CF9AF /* FPResult.swift in Sources */,
 				1417C8EF1F1D041A008CF9AF /* FPObjectProtocol.swift in Sources */,

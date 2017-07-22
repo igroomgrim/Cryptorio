@@ -8,12 +8,14 @@
 
 import Foundation
 
-struct FPHTMLWorker: FPObject {
+struct FPHTMLWorker: FPHTMLObject {
   let workerName: String
   let currentHashrate: String
   let avgHashrate: String
   let validShares: String
   let invalidShares: String
+  
+  var endpoint: FPEndpoint
   
   init?(json: JSON) {
     return nil
@@ -33,16 +35,19 @@ struct FPHTMLWorker: FPObject {
     self.avgHashrate = avgHashrate
     self.validShares = validShares
     self.invalidShares = invalidShares
+    self.endpoint = .worker
   }
 }
 
-struct FPHTMLPayout: FPObject {
+struct FPHTMLPayout: FPHTMLObject {
   let paidOn: String
   let fromBlock: String
   let toBlock: String
   let durationHour: String
   let amount: String
   let txHash: String
+  
+  var endpoint: FPEndpoint
   
   init?(json: JSON) {
     return nil
@@ -64,14 +69,17 @@ struct FPHTMLPayout: FPObject {
     self.durationHour = durationHour
     self.amount = amount
     self.txHash = txHash
+    self.endpoint = .payout
   }
 }
 
-struct FPHTMLEstEarningTime: FPObject {
+struct FPHTMLEstEarningTime: FPHTMLObject {
   let period: String
   let zec: String
   let usd: String
   let btc: String
+  
+  var endpoint: FPEndpoint
   
   init?(json: JSON) {
     return nil
@@ -89,5 +97,7 @@ struct FPHTMLEstEarningTime: FPObject {
     self.zec = zec
     self.usd = usd
     self.btc = btc
+    
+    self.endpoint = .estimatedEarning
   }
 }

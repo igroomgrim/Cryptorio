@@ -12,6 +12,7 @@
 
 import UIKit
 import NVActivityIndicatorView
+import RxSwift
 
 protocol FPDashboardDisplayLogic: class {
   func displayDashboardData(viewModel: FPDashboard.RequestData.ViewModel)
@@ -41,7 +42,9 @@ class FPDashboardViewController: UITableViewController, FPDashboardDisplayLogic,
   @IBOutlet weak var inactiveWorkersLabel: UILabel!
   
   @IBOutlet weak var addAddressBarButton: UIBarButtonItem!
-
+  
+  let dashboardData: Variable<Data?> = Variable(nil)
+  let disposeBag = DisposeBag()
   // MARK: Object lifecycle
   
   override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
@@ -92,6 +95,57 @@ class FPDashboardViewController: UITableViewController, FPDashboardDisplayLogic,
   
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
+    
+    
+    print("viewDidLoad")
+    
+    let client = APIClient()
+    let endpoint = APIEndpoint<FPData>(endpoint: FPEndpoint.dashboard, walletID: "t1cD6UjyHpdpkJ1qUMkLTwCLAheCnHYd3rB")
+    let xxx = ServiceCall.init(endpoint: endpoint, client: client)
+    
+    let x = Failable<FPError>.fail(FPError.other("f"))
+    
+    
+//      .subscribe(onNext: { (result) in
+//        print(result)
+//        print(result.map({ (data) -> Int? in
+//          let xx = endpoint.deserialize(data)
+//          print(xx)
+//          return 1
+//        }))
+//        
+//        
+//      }, onError: { (error) in
+//        if let err = error as? FPError {
+//          print(err)
+//        }
+//      }, onCompleted: { 
+//        print("complete")
+//      }, onDisposed: nil)
+//    .addDisposableTo(disposeBag)
+ 
+    
+    
+    /*
+    let client = APIClient()
+    let endpoint = APIEndpoint<FPHTMLWorker>(endpoint: FPEndpoint.worker, walletID: "t1cD6UjyHpdpkJ1qUMkLTwCLAheCnHYd3rB")
+    let service = ServiceCall(endpoint: endpoint, client: client)
+    service.subscribe(onNext: { (result) in
+      print(result.map({ (data) -> Int? in
+        let xx = endpoint.deserialize(data)
+        print(xx)
+        return 1
+      }))
+      
+    }, onError: { (error) in
+      if let err = error as? FPError {
+        print(err)
+      }
+    }, onCompleted: {
+      print("complete")
+    }, onDisposed: nil)
+      .addDisposableTo(disposeBag)
+    */
   }
   
   // MARK: Do something

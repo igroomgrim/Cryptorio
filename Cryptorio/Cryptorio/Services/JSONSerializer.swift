@@ -7,24 +7,9 @@
 //
 
 import Foundation
+import Kanna
 
 typealias JSON = [String: Any]
-
-protocol Decodable {
-  init?(json: JSON)
-  init?(html: [String?])
-}
-
-extension Decodable {
-  init?(data: Data, serializer: JSONSerializer = CryptorioJSONSerializer(), options: JSONSerialization.ReadingOptions = .mutableContainers) {
-    if let json = serializer.json(from: data, options: options) {
-      self.init(json: json)
-      return
-    }
-    
-    return nil
-  }
-}
 
 protocol JSONSerializer {
   func json(from data: Data, options: JSONSerialization.ReadingOptions) -> JSON?

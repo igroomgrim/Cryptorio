@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct FPData: FPObject {
+struct FPData: FPJSONObject {
   let address: String
   let hashRate: String
   
@@ -64,7 +64,7 @@ struct FPData: FPObject {
   }
 }
 
-struct FPPayout: FPObject {
+struct FPPayout: FPJSONObject {
   let id: Double
   let miner: String
   let start: Double
@@ -98,7 +98,7 @@ struct FPPayout: FPObject {
   }
 }
 
-struct FPWorker: FPObject {
+struct FPWorker: FPJSONObject {
   let workerName: String
   let hashRate: String
   let validShares: Int
@@ -132,7 +132,7 @@ struct FPWorker: FPObject {
   }
 }
 
-struct FPRound: FPObject {
+struct FPRound: FPJSONObject {
   let id: Double
   let miner: String
   let block: Double

@@ -15,8 +15,19 @@ enum ParseDataType {
   case estimatedEarning
 }
 
-class HTMLParser {
-  private class func parseWorkerObjects(doc: HTMLDocument) -> [FPHTMLWorker]? {
+class HTMLParser<Result: FPHTMLObject> {
+  let doc: HTMLDocument
+  
+  init(doc: HTMLDocument) {
+    self.doc = doc
+  }
+  
+  func objects() -> [Result]? {
+    var tempObjects: [[String?]] = []
+    return nil
+  }
+  
+  class func parseWorkerObjects(doc: HTMLDocument) -> [FPHTMLWorker]? {
     var tempObjects: [[String?]] = []
     
     for trData in doc.xpath("//table/tbody/tr") {
@@ -28,6 +39,7 @@ class HTMLParser {
       tempObjects.append(tempArr)
     }
     
+    print(tempObjects[0])
     let workers = tempObjects.flatMap(FPHTMLWorker.init(html:))
     
     return workers

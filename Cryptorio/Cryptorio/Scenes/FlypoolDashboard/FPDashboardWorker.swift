@@ -112,6 +112,6 @@ class FPDashboardWorker {
   }
   
   func fetchWorkers(walletID: String, completion: @escaping ([FPHTMLWorker]?) -> Void) {
-    HTMLParser.parseWorkersTable(walletID: walletID, completion: completion)
+    HTMLParser<FPHTMLWorker>.parseWorkersTable(walletID: walletID, completion: completion)
   }
 }

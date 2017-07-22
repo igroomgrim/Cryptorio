@@ -15,21 +15,46 @@ enum FPEndpoint {
   case estimatedEarning
 }
 
-struct APIEndpoint<DataType: FPObject> {
+enum FPDataType {
+  case json
+  case html
+}
+
+struct APIEndpoint<TObject: FPObject> {
   
-  public typealias Result = DataType
+  public typealias Result = TObject
   
   private let endpointString: String
   let url: URL
+  let dataType: FPDataType
   
   init(endpoint: FPEndpoint, walletID: String) {
+    let zcashURL = "http://zcash.flypool.org/api/miner_new"
     switch endpoint {
     case .dashboard, .worker:
-      self.endpointString = "http://zcash.flypool.org/api/miner_new/\(walletID)"
+      self.endpointString = "\(zcashURL)/\(walletID)"
     case .payout, .estimatedEarning:
-      self.endpointString = "http://zcash.flypool.org/api/miner_new/\(walletID)/payouts"
+      self.endpointString = "\(zcashURL)/\(walletID)/payouts"
     }
     
     self.url = URL(string: self.endpointString)!
+    
+    guard endpoint != FPEndpoint.dashboard else {
+      self.dataType = .json
+      return
+    }
+    
+    self.dataType = .html
+  }
+  
+  func deserialize(_ data: Data) -> (TObject?, [TObject]?) {
+    switch self.dataType {
+    case .json:
+      break
+    case .html:
+      break
+    }
+    
+    return (nil, nil)
   }
 }

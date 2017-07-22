@@ -18,5 +18,6 @@ protocol FPJSONObject: FPObject {
 }
 
 protocol FPHTMLObject: FPObject {
+  var endpoint: FPEndpoint { get }
   init?(html: HTML)
 }
