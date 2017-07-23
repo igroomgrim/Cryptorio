@@ -11,47 +11,18 @@
 //
 
 import UIKit
+import RxSwift
 
 class FPDashboardWorker {
-  let defaultSession = URLSession(configuration: .default)
-  var dataTask: URLSessionDataTask?
+  let disposeBag = DisposeBag()
   
   func fetchAPIData(walletID: String, completion: @escaping (FPResult<FPData>) -> Void) {
+    let client = APIClient()
+    let endpoint = APIEndpoint<FPData>(endpoint: FPEndpoint.dashboard, walletID: walletID)
+    let callDashboardData = ServiceCall.init(endpoint: endpoint, client: client)
     
-    guard let urlComponents = URLComponents(string: "http://zcash.flypool.org/api/miner_new/\(walletID)") else {
-      let fpError = FPError.api("Can't parse URLs based on RFC 3986 and to construct URLs from this url")
-      let errorResult = FPResult<FPData>.Failure(error: fpError)
-      DispatchQueue.main.async {
-        completion(errorResult)
-      }
-      
-      return
-    }
-    
-    guard let url = urlComponents.url else {
-      let fpError = FPError.api("URL from urlComponents is empty")
-      let errorResult = FPResult<FPData>.Failure(error: fpError)
-      DispatchQueue.main.async {
-        completion(errorResult)
-      }
-      
-      return
-    }
-      
-    dataTask = defaultSession.dataTask(with: url) { data, response, error in
-      defer { self.dataTask = nil }
-        
-      if let err = error {
-        let fpError = FPError.other(err.localizedDescription)
-        let errorResult = FPResult<FPData>.Failure(error: fpError)
-        DispatchQueue.main.async {
-          completion(errorResult)
-        }
-        
-        return
-      }
-        
-      guard let data = data else {
+    callDashboardData.subscribe(onNext: { (result) in
+      guard let value = result.value() as? Data else {
         let error = FPError.api("Reponse data is empty. We can't fetch data from Flypool API")
         let errorResult = FPResult<FPData>.Failure(error: error)
         DispatchQueue.main.async {
@@ -60,9 +31,10 @@ class FPDashboardWorker {
         
         return
       }
-        
-      guard let httpResponse = response as? HTTPURLResponse else {
-        let error = FPError.api("Can't fetch response data from Flypool API")
+      
+      let dashboard = endpoint.deserialize(value).0
+      guard let fpData = dashboard else {
+        let error = FPError.api("Reponse data can't deserialize")
         let errorResult = FPResult<FPData>.Failure(error: error)
         DispatchQueue.main.async {
           completion(errorResult)
@@ -70,48 +42,57 @@ class FPDashboardWorker {
         
         return
       }
-          
-      switch httpResponse.statusCode {
-        case 200..<300:
-          guard let fpData = FPData(data: data) else {
-            let error = FPError.other("Can't parse data from Flypool API")
-            let errorResult = FPResult<FPData>.Failure(error: error)
-            DispatchQueue.main.async {
-              completion(errorResult)
-            }
-            
-            return
-          }
-            
-          let result = FPResult.Success(result: fpData)
-          DispatchQueue.main.async {
-            completion(result)
-          }
-            
-        case 400..<600:
-          let error = FPError.api(httpResponse.debugDescription)
-          let errorResult = FPResult<FPData>.Failure(error: error)
-          DispatchQueue.main.async {
-            completion(errorResult)
-          }
-            
-        default:
-          let error = FPError.api("unrecognized HTTP status code: \(httpResponse.statusCode)")
-          let errorResult = FPResult<FPData>.Failure(error: error)
-          DispatchQueue.main.async {
-            completion(errorResult)
-          }
-        }
-      } // dataTask
       
-      dataTask?.resume()
+      let result = FPResult.Success(result: fpData)
+      DispatchQueue.main.async {
+        completion(result)
+      }
+
+    }, onError: { (err) in
+      let fpError = FPError.other(err.localizedDescription)
+      let errorResult = FPResult<FPData>.Failure(error: fpError)
+      DispatchQueue.main.async {
+        completion(errorResult)
+      }
+    }, onCompleted: nil, onDisposed: nil)
+      .addDisposableTo(disposeBag)
   }
   
   func fetchWalletID() -> String? {
     return WalletIDStore.getWalletID(from: .flypool)
   }
   
-  func fetchWorkers(walletID: String, completion: @escaping ([FPHTMLWorker]?) -> Void) {
-    HTMLParser<FPHTMLWorker>.parseWorkersTable(walletID: walletID, completion: completion)
+  func fetchWorkers(walletID: String, completion: @escaping ([FPHTMLWorker]?) -> Void) {    
+    let client = APIClient()
+    let endpoint = APIEndpoint<FPHTMLWorker>(endpoint: FPEndpoint.worker, walletID: walletID)
+    let callWorkerData = ServiceCall.init(endpoint: endpoint, client: client)
+    
+    callWorkerData.subscribe(onNext: { (result) in
+      guard let value = result.value() as? Data else {
+        DispatchQueue.main.async {
+          completion(nil)
+        }
+        
+        return
+      }
+      
+      guard let workers = endpoint.deserialize(value).1 else {
+        DispatchQueue.main.async {
+          completion(nil)
+        }
+        
+        return
+      }
+
+      DispatchQueue.main.async {
+        completion(workers)
+      }
+      
+    }, onError: { (err) in
+      DispatchQueue.main.async {
+        completion(nil)
+      }
+    }, onCompleted: nil, onDisposed: nil)
+    .addDisposableTo(disposeBag)
   }
 }

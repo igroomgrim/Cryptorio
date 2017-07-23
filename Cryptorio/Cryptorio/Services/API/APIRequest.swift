@@ -61,16 +61,13 @@ class APIRequest<Result: FPObject> {
    
     switch httpResponse.statusCode {
     case 400..<600:
-      print("400 < 600")
       let err = FPError.api("api error : \(httpResponse.statusCode)")
       result = Failable.fail(err)
       
     case 200..<300:
-      print("200 < 300 : code : \(httpResponse.statusCode)")
       result = Failable.success(data)
         
     default:
-      print("default")
       let err = FPError.other("unrecognized HTTP status code: \(httpResponse.statusCode)")
       result = Failable.fail(err)
     }

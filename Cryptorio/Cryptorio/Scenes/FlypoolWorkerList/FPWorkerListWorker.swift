@@ -11,10 +11,44 @@
 //
 
 import UIKit
+import RxSwift
 
 class FPWorkerListWorker {
+  let disposeBag = DisposeBag()
+  
   func fetchWorkers(walletID: String, completion: @escaping ([FPHTMLWorker]?) -> Void) {
-    HTMLParser<FPHTMLWorker>.parseWorkersTable(walletID: walletID, completion: completion)
+    let client = APIClient()
+    let endpoint = APIEndpoint<FPHTMLWorker>(endpoint: FPEndpoint.worker, walletID: walletID)
+    let callWorkerData = ServiceCall.init(endpoint: endpoint, client: client)
+    
+    callWorkerData.subscribe(onNext: { (result) in
+      guard let value = result.value() as? Data else {
+        DispatchQueue.main.async {
+          completion(nil)
+        }
+        
+        return
+      }
+      
+      let workersData = endpoint.deserialize(value).1
+      guard let workers = workersData else {
+        DispatchQueue.main.async {
+          completion(nil)
+        }
+        
+        return
+      }
+      
+      DispatchQueue.main.async {
+        completion(workers)
+      }
+      
+    }, onError: { (err) in
+      DispatchQueue.main.async {
+        completion(nil)
+      }
+    }, onCompleted: nil, onDisposed: nil)
+      .addDisposableTo(disposeBag)
   }
   
   func fetchWalletID() -> String? {

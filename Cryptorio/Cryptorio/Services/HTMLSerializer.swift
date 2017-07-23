@@ -20,7 +20,7 @@ struct CryptorioHTMLSerializer: HTMLSerializer {
     guard let htmlDoc = HTML(html: data, encoding: .utf8) else {
       return nil
     }
-    
+
     return htmlDoc
   }
 }

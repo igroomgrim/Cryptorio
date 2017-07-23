@@ -29,12 +29,16 @@ struct APIEndpoint<TObject: FPObject> {
   let dataType: FPDataType
   
   init(endpoint: FPEndpoint, walletID: String) {
-    let zcashURL = "http://zcash.flypool.org/api/miner_new"
+    let apiURL = "http://zcash.flypool.org/api/miner_new"
+    let htmlURL = "http://zcash.flypool.org/miners"
+    
     switch endpoint {
-    case .dashboard, .worker:
-      self.endpointString = "\(zcashURL)/\(walletID)"
+    case .dashboard:
+      self.endpointString = "\(apiURL)/\(walletID)"
+    case .worker:
+      self.endpointString = "\(htmlURL)/\(walletID)"
     case .payout, .estimatedEarning:
-      self.endpointString = "\(zcashURL)/\(walletID)/payouts"
+      self.endpointString = "\(htmlURL)/\(walletID)/payouts"
     }
     self.endpoint = endpoint
     self.url = URL(string: self.endpointString)!
@@ -57,7 +61,7 @@ struct APIEndpoint<TObject: FPObject> {
       guard let doc = htmlSerializer.html(from: data) else {
         return (nil, nil)
       }
-      
+
       switch self.endpoint {
       case .dashboard, .worker:
         let workers = HTMLParser<TObject>.parseWorkerObjects(doc: doc)
