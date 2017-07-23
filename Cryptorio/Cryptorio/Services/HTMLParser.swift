@@ -34,8 +34,33 @@ class HTMLParser<TObject: FPObject> {
     return workers
   }
   
-  private class func parsePayoutObjects(doc: HTMLDocument) -> [FPHTMLPayout] {
-    return []
+  class func parsePayoutObjects(doc: HTMLDocument) -> [TObject] {
+    var tempObjects: [[String?]] = []
+    
+    let payoutTableIndex = 0
+    var indexCount = 0
+    
+    for tbData in doc.xpath("//table") {
+      for trData in tbData.xpath("tr").dropFirst() {
+        guard indexCount == payoutTableIndex else {
+          continue
+        }
+        
+        var tempArr: [String?] = []
+        for td in trData.xpath("td") {
+          tempArr.append(td.text)
+          
+        }
+        
+        tempObjects.append(tempArr)
+      }
+      
+      indexCount += 1
+    }
+    
+    let payouts = tempObjects.flatMap(TObject.init(html:))
+
+    return payouts
   }
   
   class func parseEstimatedTimeObjects(doc: HTMLDocument) -> [TObject] {

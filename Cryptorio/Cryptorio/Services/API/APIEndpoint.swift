@@ -30,7 +30,7 @@ struct APIEndpoint<TObject: FPObject> {
   
   init(endpoint: FPEndpoint, walletID: String) {
     let apiURL = "http://zcash.flypool.org/api/miner_new"
-    let htmlURL = "http://zcash.flypool.org/miners"
+    let htmlURL = "https://zcash.flypool.org/miners"
     
     switch endpoint {
     case .dashboard:
@@ -67,7 +67,8 @@ struct APIEndpoint<TObject: FPObject> {
         let workers = HTMLParser<TObject>.parseWorkerObjects(doc: doc)
         return (nil, workers)
       case .payout:
-        return (nil, nil)
+        let payouts = HTMLParser<TObject>.parsePayoutObjects(doc: doc)
+        return (nil, payouts)
       case .estimatedEarning:
         let estimatedEarnings = HTMLParser<TObject>.parseEstimatedTimeObjects(doc: doc)
         return (nil, estimatedEarnings)
