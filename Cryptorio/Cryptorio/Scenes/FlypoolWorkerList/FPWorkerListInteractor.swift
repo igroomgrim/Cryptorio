@@ -13,7 +13,10 @@
 import UIKit
 
 protocol FPWorkerListBusinessLogic {
+  // Get loaded data from dashboard
   func getWorkers(request: FPWorkerList.GetWorkers.Request)
+  
+  // Get new data from html page
   func fetchWorkers(request: FPWorkerList.FetchWorkers.Request)
 }
 
