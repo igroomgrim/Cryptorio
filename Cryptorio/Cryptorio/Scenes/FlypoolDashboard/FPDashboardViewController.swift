@@ -101,9 +101,23 @@ class FPDashboardViewController: UITableViewController, FPDashboardDisplayLogic,
     
     let client = APIClient()
     let endpoint = APIEndpoint<FPData>(endpoint: FPEndpoint.dashboard, walletID: "t1cD6UjyHpdpkJ1qUMkLTwCLAheCnHYd3rB")
-    let xxx = ServiceCall.init(endpoint: endpoint, client: client)
+    let callDashboardData = ServiceCall.init(endpoint: endpoint, client: client)
     
-    let x = Failable<FPError>.fail(FPError.other("f"))
+    callDashboardData.subscribe(onNext: { (result) in
+      guard let value = result.value() as? Data else {
+        return
+      }
+      let dashboard = endpoint.deserialize(value).0
+      guard let dbData = dashboard else {
+        return
+      }
+      print(dbData.address)
+    }, onError: { (error) in
+      
+    }, onCompleted: { 
+      print("onCOmpleted")
+    }, onDisposed: nil)
+    .addDisposableTo(disposeBag)
     
     
 //      .subscribe(onNext: { (result) in

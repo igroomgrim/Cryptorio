@@ -23,7 +23,7 @@ enum FPDataType {
 struct APIEndpoint<TObject: FPObject> {
   
   public typealias Result = TObject
-  
+  private let endpoint: FPEndpoint
   private let endpointString: String
   let url: URL
   let dataType: FPDataType
@@ -36,7 +36,7 @@ struct APIEndpoint<TObject: FPObject> {
     case .payout, .estimatedEarning:
       self.endpointString = "\(zcashURL)/\(walletID)/payouts"
     }
-    
+    self.endpoint = endpoint
     self.url = URL(string: self.endpointString)!
     
     guard endpoint != FPEndpoint.dashboard else {
@@ -50,11 +50,24 @@ struct APIEndpoint<TObject: FPObject> {
   func deserialize(_ data: Data) -> (TObject?, [TObject]?) {
     switch self.dataType {
     case .json:
-      break
-    case .html:
-      break
-    }
+      return (TObject(data: data), nil)
     
-    return (nil, nil)
+    case .html:
+      let htmlSerializer = CryptorioHTMLSerializer()
+      guard let doc = htmlSerializer.html(from: data) else {
+        return (nil, nil)
+      }
+      
+      switch self.endpoint {
+      case .dashboard, .worker:
+        let workers = HTMLParser<TObject>.parseWorkerObjects(doc: doc)
+        return (nil, workers)
+      case .payout:
+        return (nil, nil)
+      case .estimatedEarning:
+        let estimatedEarnings = HTMLParser<TObject>.parseEstimatedTimeObjects(doc: doc)
+        return (nil, estimatedEarnings)
+      }
+    }
   }
 }

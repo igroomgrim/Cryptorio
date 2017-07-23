@@ -16,7 +16,7 @@ protocol JSONSerializer {
 }
 
 struct CryptorioJSONSerializer: JSONSerializer {
-  func json(from data: Data, options: JSONSerialization.ReadingOptions) -> JSON? {
+  func json(from data: Data, options: JSONSerialization.ReadingOptions = JSONSerialization.ReadingOptions.allowFragments) -> JSON? {
     guard let json = (try? JSONSerialization.jsonObject(with: data, options: options)) as? JSON else {
       return nil
     }

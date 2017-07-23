@@ -12,6 +12,15 @@ enum Failable<TResult> {
   case success(TResult)
   case fail(FPError)
   
+  func value() -> Any {
+    switch self {
+    case .success(let result):
+      return result
+    case .fail(let error):
+      return error
+    }
+  }
+  
   public func map<T>(_ transform: (TResult) -> T) -> Failable<T> {
     switch self {
     case .success(let result):

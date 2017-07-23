@@ -15,19 +15,9 @@ enum ParseDataType {
   case estimatedEarning
 }
 
-class HTMLParser<Result: FPHTMLObject> {
-  let doc: HTMLDocument
-  
-  init(doc: HTMLDocument) {
-    self.doc = doc
-  }
-  
-  func objects() -> [Result]? {
-    var tempObjects: [[String?]] = []
-    return nil
-  }
-  
-  class func parseWorkerObjects(doc: HTMLDocument) -> [FPHTMLWorker]? {
+
+class HTMLParser<TObject: FPObject> {
+  class func parseWorkerObjects(doc: HTMLDocument) -> [TObject]? {
     var tempObjects: [[String?]] = []
     
     for trData in doc.xpath("//table/tbody/tr") {
@@ -40,7 +30,7 @@ class HTMLParser<Result: FPHTMLObject> {
     }
     
     print(tempObjects[0])
-    let workers = tempObjects.flatMap(FPHTMLWorker.init(html:))
+    let workers = tempObjects.flatMap(TObject.init(html:))
     
     return workers
   }
@@ -49,7 +39,7 @@ class HTMLParser<Result: FPHTMLObject> {
     return []
   }
   
-  private class func parseEstimatedTimeObjects(doc: HTMLDocument) -> [FPHTMLEstEarningTime] {
+  class func parseEstimatedTimeObjects(doc: HTMLDocument) -> [TObject] {
     var tempObjects: [[String?]] = []
     
     let estEarningTableIndex = 1
@@ -73,15 +63,11 @@ class HTMLParser<Result: FPHTMLObject> {
       indexCount += 1
     }
     
-    let estEarningTimes = tempObjects.flatMap(FPHTMLEstEarningTime.init(html:))
+    let estEarningTimes = tempObjects.flatMap(TObject.init(html:))
     
     return estEarningTimes
   }
-  
-  class func xxxx(type: ParseDataType, walletID: String, completion: @escaping ([FPHTMLWorker]?) -> Void) {
-    parseArrayDataFromTable(parseDataType: type, walletID: walletID, completion: completion)
-  }
-  
+    
   class func request(walletID: String, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) {
     guard let url = URL(string: "http://zcash.flypool.org/miners/\(walletID)/payouts") else {
       return
@@ -94,42 +80,6 @@ class HTMLParser<Result: FPHTMLObject> {
     
     dataTask?.resume()
   }
-  
-  class func parseArrayDataFromTable<T: FPObject>(parseDataType: ParseDataType, walletID: String, completion: @escaping ([T]?) -> Void) {
-    guard let url = URL(string: "http://zcash.flypool.org/miners/\(walletID)/payouts") else {
-      completion(nil)
-      return
-    }
-        
-    let defaultSession = URLSession(configuration: .default)
-    var dataTask: URLSessionDataTask?
-    
-    dataTask = defaultSession.dataTask(with: url) { data, response, error in
-      defer { dataTask = nil }
-      if let _ = error {
-        DispatchQueue.main.async {
-          completion(nil)
-        }
-      } else if let data = data,
-        let response = response as? HTTPURLResponse,
-        response.statusCode == 200 {
-        guard let doc = HTML(html: data, encoding: .utf8) else {
-          DispatchQueue.main.async {
-            completion(nil)
-          }
-          return
-        }
-
-        DispatchQueue.main.async {
-//          completion(T)
-        }
-        
-      }
-    }
-    
-    dataTask?.resume()
-  }
-  
   
   class func parseWorkersTable(walletID: String, completion: @escaping ([FPHTMLWorker]?) -> Void) {
     guard let url = URL(string: "http://zcash.flypool.org/miners/\(walletID)") else {
@@ -159,7 +109,7 @@ class HTMLParser<Result: FPHTMLObject> {
         let workers = parseWorkerObjects(doc: doc)
         
         DispatchQueue.main.async {
-          completion(workers)
+          completion(workers as? [FPHTMLWorker])
         }
         
       }
