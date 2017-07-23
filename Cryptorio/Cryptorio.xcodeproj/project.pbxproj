@@ -62,6 +62,7 @@
 		981E092D1F1875950002FE6B /* FPWorkerListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981E09271F1875950002FE6B /* FPWorkerListViewController.swift */; };
 		981E092E1F1875950002FE6B /* FPWorkerListWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981E09281F1875950002FE6B /* FPWorkerListWorker.swift */; };
 		981E09311F188EEA0002FE6B /* FPWorkerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981E09301F188EEA0002FE6B /* FPWorkerTableViewCell.swift */; };
+		9871799B1F24A687001BD1CC /* FPPayoutTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9871799A1F24A687001BD1CC /* FPPayoutTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -147,6 +148,7 @@
 		981E09271F1875950002FE6B /* FPWorkerListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FPWorkerListViewController.swift; path = Scenes/FlypoolWorkerList/FPWorkerListViewController.swift; sourceTree = "<group>"; };
 		981E09281F1875950002FE6B /* FPWorkerListWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FPWorkerListWorker.swift; path = Scenes/FlypoolWorkerList/FPWorkerListWorker.swift; sourceTree = "<group>"; };
 		981E09301F188EEA0002FE6B /* FPWorkerTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FPWorkerTableViewCell.swift; path = TableViewCell/FPWorkerTableViewCell.swift; sourceTree = "<group>"; };
+		9871799A1F24A687001BD1CC /* FPPayoutTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FPPayoutTableViewCell.swift; path = TableViewCell/FPPayoutTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -367,6 +369,7 @@
 			isa = PBXGroup;
 			children = (
 				981E09301F188EEA0002FE6B /* FPWorkerTableViewCell.swift */,
+				9871799A1F24A687001BD1CC /* FPPayoutTableViewCell.swift */,
 			);
 			name = TableViewCell;
 			sourceTree = "<group>";
@@ -530,6 +533,7 @@
 				1417C8EF1F1D041A008CF9AF /* FPObjectProtocol.swift in Sources */,
 				1417C9081F1E90AB008CF9AF /* APIEndpoint.swift in Sources */,
 				14BC47101F1688A8006712F0 /* HTMLParser.swift in Sources */,
+				9871799B1F24A687001BD1CC /* FPPayoutTableViewCell.swift in Sources */,
 				981E09311F188EEA0002FE6B /* FPWorkerTableViewCell.swift in Sources */,
 				981D02341F0DF3990016C2BC /* AppDelegate.swift in Sources */,
 			);

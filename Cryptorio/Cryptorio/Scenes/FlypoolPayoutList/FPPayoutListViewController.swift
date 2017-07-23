@@ -19,7 +19,7 @@ protocol FPPayoutListDisplayLogic: class {
 class FPPayoutListViewController: UITableViewController, FPPayoutListDisplayLogic {
   var interactor: FPPayoutListBusinessLogic?
   var router: (NSObjectProtocol & FPPayoutListRoutingLogic & FPPayoutListDataPassing)?
-
+  var displayedFPPayouts: [FPHTMLPayout] = []
   // MARK: Object lifecycle
   
   override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
@@ -68,12 +68,32 @@ class FPPayoutListViewController: UITableViewController, FPPayoutListDisplayLogi
   func fetchPayouts() {
     let request = FPPayoutList.FetchPayouts.Request()
     interactor?.fetchPayouts(request: request)
-    print("fetchPayouts")
   }
   
   func displayPayoutList(viewModel: FPPayoutList.GetPayouts.ViewModel) {
-    print("displayPayoutList")
-    print(viewModel)
-    //nameTextField.text = viewModel.name
+    if let payouts = viewModel.displayedFPPayouts {
+      displayedFPPayouts = payouts
+      
+      tableView.reloadData()
+      refreshControl?.endRefreshing()
+    }
+  }
+}
+
+extension FPPayoutListViewController {
+  override func numberOfSections(in tableView: UITableView) -> Int {
+    return 1
+  }
+  
+  override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    return displayedFPPayouts.count
+  }
+  
+  override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: FPPayoutTableViewCell.self), for: indexPath) as! FPPayoutTableViewCell
+    let payout = displayedFPPayouts[indexPath.row]
+    cell.bind(to: payout)
+    
+    return cell
   }
 }

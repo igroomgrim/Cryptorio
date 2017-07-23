@@ -380,22 +380,68 @@
             </objects>
             <point key="canvasLocation" x="3708" y="-417.8410794602699"/>
         </scene>
-        <!--Payout List View Controller-->
+        <!--Payouts-->
         <scene sceneID="WaF-VF-r6d">
             <objects>
-                <tableViewController id="0nc-rg-jNf" customClass="FPPayoutListViewController" customModule="Cryptorio" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="eut-QD-lXX">
+                <tableViewController title="Payouts" id="0nc-rg-jNf" customClass="FPPayoutListViewController" customModule="Cryptorio" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="72" sectionHeaderHeight="28" sectionFooterHeight="28" id="eut-QD-lXX">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="FPPayoutTableViewCell" id="P4E-73-8IF">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="FPPayoutTableViewCell" id="P4E-73-8IF" customClass="FPPayoutTableViewCell" customModule="Cryptorio" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="72"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="P4E-73-8IF" id="lxM-To-l8I">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="72"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 ZEC" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.30000001192092896" translatesAutoresizingMaskIntoConstraints="NO" id="cN6-zE-Wun">
+                                            <rect key="frame" x="16" y="8" width="343" height="28"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="24"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="paid on : -" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="CSt-Vv-i0b">
+                                            <rect key="frame" x="16" y="38" width="343" height="12"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="10"/>
+                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="duration [h] : " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="2CE-t8-TqB">
+                                            <rect key="frame" x="16" y="51" width="71" height="14"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="71" id="7JB-M5-NPs"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="cvk-wD-za1">
+                                            <rect key="frame" x="89" y="51" width="7" height="14"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailingMargin" secondItem="cN6-zE-Wun" secondAttribute="trailing" constant="8" id="1tp-HV-6Yg"/>
+                                        <constraint firstItem="cN6-zE-Wun" firstAttribute="leading" secondItem="lxM-To-l8I" secondAttribute="leadingMargin" constant="8" id="3d5-nh-hp0"/>
+                                        <constraint firstItem="CSt-Vv-i0b" firstAttribute="top" secondItem="cN6-zE-Wun" secondAttribute="bottom" constant="2" id="5WO-19-8Sg"/>
+                                        <constraint firstItem="cvk-wD-za1" firstAttribute="baseline" secondItem="2CE-t8-TqB" secondAttribute="baseline" id="Ru2-va-hqg"/>
+                                        <constraint firstItem="2CE-t8-TqB" firstAttribute="top" secondItem="CSt-Vv-i0b" secondAttribute="bottom" constant="1" id="aAq-DU-jrM"/>
+                                        <constraint firstItem="CSt-Vv-i0b" firstAttribute="leading" secondItem="lxM-To-l8I" secondAttribute="leadingMargin" constant="8" id="caU-xA-1PV"/>
+                                        <constraint firstItem="2CE-t8-TqB" firstAttribute="leading" secondItem="lxM-To-l8I" secondAttribute="leading" constant="16" id="hUs-LW-gl1"/>
+                                        <constraint firstItem="cvk-wD-za1" firstAttribute="leading" secondItem="2CE-t8-TqB" secondAttribute="trailing" constant="2" id="q44-wM-AKr"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="CSt-Vv-i0b" secondAttribute="trailing" constant="8" id="qc5-Ca-vBI"/>
+                                        <constraint firstItem="cN6-zE-Wun" firstAttribute="top" secondItem="lxM-To-l8I" secondAttribute="topMargin" id="xXR-oo-Utw"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="amountLabel" destination="cN6-zE-Wun" id="jwc-9Y-5ee"/>
+                                    <outlet property="durationLabel" destination="cvk-wD-za1" id="tS5-RR-28t"/>
+                                    <outlet property="paidOnLabel" destination="CSt-Vv-i0b" id="Kns-JX-9wd"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -406,7 +452,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HsN-CR-dTy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3709" y="283"/>
+            <point key="canvasLocation" x="3708" y="282.90854572713647"/>
         </scene>
         <!--Flypool-->
         <scene sceneID="c4i-1Z-UIN">
