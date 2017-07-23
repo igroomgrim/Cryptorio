@@ -13,6 +13,10 @@ class FPWorkerTableViewCell: UITableViewCell {
   @IBOutlet weak var workerNameLabel: UILabel!
   @IBOutlet weak var hashRateLabel: UILabel!
   
+  override func prepareForReuse() {
+    contentView.backgroundColor = UIColor.white
+  }
+  
   func bind(to model: FPHTMLWorker) {
     workerNameLabel.text = model.workerName
     hashRateLabel.text = "\(model.currentHashrate) - \(model.avgHashrate)"
