@@ -13,16 +13,16 @@
 import UIKit
 
 protocol FPPayoutListPresentationLogic {
-  func presentSomething(response: FPPayoutList.Something.Response)
+  func presentPayoutList(response: FPPayoutList.GetPayouts.Response)
 }
 
 class FPPayoutListPresenter: FPPayoutListPresentationLogic {
   weak var viewController: FPPayoutListDisplayLogic?
   
-  // MARK: Do something
+  // MARK: Present payouts
   
-  func presentSomething(response: FPPayoutList.Something.Response) {
-    let viewModel = FPPayoutList.Something.ViewModel()
-    viewController?.displaySomething(viewModel: viewModel)
+  func presentPayoutList(response: FPPayoutList.GetPayouts.Response) {
+    let viewModel = FPPayoutList.GetPayouts.ViewModel(displayedFPPayouts: response.fpPayouts)
+    viewController?.displayPayoutList(viewModel: viewModel)
   }
 }

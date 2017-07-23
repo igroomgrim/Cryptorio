@@ -15,12 +15,25 @@ import UIKit
 enum FPPayoutList {
   // MARK: Use cases
   
-  enum Something {
+  enum GetPayouts {
     struct Request {
     }
     struct Response {
+      var fpPayouts: [FPHTMLPayout]?
     }
     struct ViewModel {
+      var displayedFPPayouts: [FPHTMLPayout]?
+    }
+  }
+  
+  enum FetchPayouts {
+    struct Request {
+    }
+    struct Response {
+      var fpPayouts: [FPHTMLPayout]?
+    }
+    struct ViewModel {
+      var displayedFPPayouts: [FPHTMLPayout]?
     }
   }
 }

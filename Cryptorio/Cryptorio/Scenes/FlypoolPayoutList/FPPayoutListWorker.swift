@@ -11,8 +11,47 @@
 //
 
 import UIKit
+import RxSwift
 
 class FPPayoutListWorker {
-  func doSomeWork() {
+  let disposeBag = DisposeBag()
+  
+  func fetchPayouts(walletID: String, completion: @escaping ([FPHTMLPayout]?) -> Void) {
+    let client = APIClient()
+    let endpoint = APIEndpoint<FPHTMLPayout>(endpoint: FPEndpoint.payout, walletID: walletID)
+    let callPayoutData = ServiceCall.init(endpoint: endpoint, client: client)
+    
+    callPayoutData.subscribe(onNext: { (result) in
+      guard let value = result.value() as? Data else {
+        DispatchQueue.main.async {
+          completion(nil)
+        }
+        
+        return
+      }
+      
+      let payoutsData = endpoint.deserialize(value).1
+      guard let payouts = payoutsData else {
+        DispatchQueue.main.async {
+          completion(nil)
+        }
+        
+        return
+      }
+      
+      DispatchQueue.main.async {
+        completion(payouts)
+      }
+      
+    }, onError: { (err) in
+      DispatchQueue.main.async {
+        completion(nil)
+      }
+    }, onCompleted: nil, onDisposed: nil)
+      .addDisposableTo(disposeBag)
+  }
+  
+  func fetchWalletID() -> String? {
+    return WalletIDStore.getWalletID(from: .flypool)
   }
 }

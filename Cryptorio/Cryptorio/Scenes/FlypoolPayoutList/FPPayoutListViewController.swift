@@ -13,7 +13,7 @@
 import UIKit
 
 protocol FPPayoutListDisplayLogic: class {
-  func displaySomething(viewModel: FPPayoutList.Something.ViewModel)
+  func displayPayoutList(viewModel: FPPayoutList.GetPayouts.ViewModel)
 }
 
 class FPPayoutListViewController: UITableViewController, FPPayoutListDisplayLogic {
@@ -62,19 +62,18 @@ class FPPayoutListViewController: UITableViewController, FPPayoutListDisplayLogi
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    doSomething()
+    fetchPayouts()
+  }
+    
+  func fetchPayouts() {
+    let request = FPPayoutList.FetchPayouts.Request()
+    interactor?.fetchPayouts(request: request)
+    print("fetchPayouts")
   }
   
-  // MARK: Do something
-  
-  //@IBOutlet weak var nameTextField: UITextField!
-  
-  func doSomething() {
-    let request = FPPayoutList.Something.Request()
-    interactor?.doSomething(request: request)
-  }
-  
-  func displaySomething(viewModel: FPPayoutList.Something.ViewModel) {
+  func displayPayoutList(viewModel: FPPayoutList.GetPayouts.ViewModel) {
+    print("displayPayoutList")
+    print(viewModel)
     //nameTextField.text = viewModel.name
   }
 }

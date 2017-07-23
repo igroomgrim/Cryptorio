@@ -13,7 +13,7 @@
 import UIKit
 
 protocol FPPayoutListBusinessLogic {
-  func doSomething(request: FPPayoutList.Something.Request)
+  func fetchPayouts(request: FPPayoutList.FetchPayouts.Request)
 }
 
 protocol FPPayoutListDataStore {
@@ -23,15 +23,25 @@ protocol FPPayoutListDataStore {
 class FPPayoutListInteractor: FPPayoutListBusinessLogic, FPPayoutListDataStore {
   var presenter: FPPayoutListPresentationLogic?
   var worker: FPPayoutListWorker?
-  //var name: String = ""
   
-  // MARK: Do something
+  var fpPayouts: [FPHTMLPayout]?
   
-  func doSomething(request: FPPayoutList.Something.Request) {
+  init() {
     worker = FPPayoutListWorker()
-    worker?.doSomeWork()
+  }
+  
+  func fetchPayouts(request: FPPayoutList.FetchPayouts.Request) {
+    guard let walletID = worker?.fetchWalletID() else {
+      return
+    }
     
-    let response = FPPayoutList.Something.Response()
-    presenter?.presentSomething(response: response)
+    worker?.fetchPayouts(walletID: walletID, completion: { [weak self] pos in
+      guard let fpPayouts = pos else {
+        return
+      }
+      
+      let response = FPPayoutList.GetPayouts.Response(fpPayouts: fpPayouts)
+      self?.presenter?.presentPayoutList(response: response)
+    })
   }
 }
