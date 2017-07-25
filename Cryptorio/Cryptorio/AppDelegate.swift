@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
       
       Fabric.with([Crashlytics.self, Answers.self])
-      GADMobileAds.configure(withApplicationID: "")
+      GADMobileAds.configure(withApplicationID: "ca-app-pub-3484233131234982~1490797808")
       
       UITabBar.appearance().tintColor = UIColor.black
       UINavigationBar.appearance().tintColor = UIColor.black

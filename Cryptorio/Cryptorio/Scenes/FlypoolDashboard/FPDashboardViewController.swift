@@ -13,6 +13,7 @@
 import UIKit
 import NVActivityIndicatorView
 import RxSwift
+import GoogleMobileAds
 
 protocol FPDashboardDisplayLogic: class {
   func displayDashboardData(viewModel: FPDashboard.RequestData.ViewModel)
@@ -21,7 +22,7 @@ protocol FPDashboardDisplayLogic: class {
   func displayDashboardAddWalletNotification()
 }
 
-class FPDashboardViewController: UITableViewController, FPDashboardDisplayLogic, NVActivityIndicatorViewable {
+class FPDashboardViewController: UITableViewController, FPDashboardDisplayLogic, NVActivityIndicatorViewable, GADBannerViewDelegate {
   var interactor: FPDashboardBusinessLogic?
   var router: (NSObjectProtocol & FPDashboardRoutingLogic & FPDashboardDataPassing)?
   
@@ -42,9 +43,13 @@ class FPDashboardViewController: UITableViewController, FPDashboardDisplayLogic,
   @IBOutlet weak var inactiveWorkersLabel: UILabel!
   
   @IBOutlet weak var addAddressBarButton: UIBarButtonItem!
+
+  @IBOutlet weak var bannerAdView: GADBannerView!
   
   let dashboardData: Variable<Data?> = Variable(nil)
   let disposeBag = DisposeBag()
+  let adUnitID = ""
+  let adUnitIDForTest = ""
   // MARK: Object lifecycle
   
   override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
@@ -91,6 +96,8 @@ class FPDashboardViewController: UITableViewController, FPDashboardDisplayLogic,
     clearFooterCell()
     
     fetchDashboardData()
+    
+    loadGoogleAd()
   }
   
   override func viewDidAppear(_ animated: Bool) {
@@ -104,6 +111,27 @@ class FPDashboardViewController: UITableViewController, FPDashboardDisplayLogic,
   
   func clearFooterCell() {
     tableView.tableFooterView = UIView()
+  }
+  
+  private func loadGoogleAd() {
+    
+    // Test Ads
+    bannerAdView.adUnitID = adUnitIDForTest
+    
+    // Real Ads
+//    bannerAdView.adUnitID = adUnitID
+    bannerAdView.rootViewController = self
+    bannerAdView.delegate = self
+    
+    let request = GADRequest()
+    
+    // For test ads
+    request.testDevices = [
+      kGADSimulatorID,
+      ""
+    ]
+    
+    bannerAdView.load(request)
   }
   
   private func loadDashboardData() {
