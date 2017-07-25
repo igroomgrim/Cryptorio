@@ -150,8 +150,10 @@ class FPDashboardViewController: UITableViewController, FPDashboardDisplayLogic,
   }
   
   func fetchDashboardData() {
-    // Display loading indicator
-    startAnimating()
+    if let _ = WalletIDStore.getWalletID(from: .flypool) {
+      // Display loading indicator
+      startAnimating()
+    }
     
     loadDashboardData()
   }
