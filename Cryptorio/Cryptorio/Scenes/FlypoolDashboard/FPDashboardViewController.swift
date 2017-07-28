@@ -46,6 +46,24 @@ class FPDashboardViewController: UITableViewController, FPDashboardDisplayLogic,
 
   @IBOutlet weak var bannerAdView: GADBannerView!
   
+  @IBOutlet weak var zecMinLabel: UILabel!
+  @IBOutlet weak var zecHrLabel: UILabel!
+  @IBOutlet weak var zecDayLabel: UILabel!
+  @IBOutlet weak var zecWeekLabel: UILabel!
+  @IBOutlet weak var zecMonthLabel: UILabel!
+  
+  @IBOutlet weak var usdMinLabel: UILabel!
+  @IBOutlet weak var usdHrLabel: UILabel!
+  @IBOutlet weak var usdDayLabel: UILabel!
+  @IBOutlet weak var usdWeekLabel: UILabel!
+  @IBOutlet weak var usdMonthLabel: UILabel!
+  
+  @IBOutlet weak var btcMinLabel: UILabel!
+  @IBOutlet weak var btcHrLabel: UILabel!
+  @IBOutlet weak var btcDayLabel: UILabel!
+  @IBOutlet weak var btcWeekLabel: UILabel!
+  @IBOutlet weak var btcMonthLabel: UILabel!
+  
   let dashboardData: Variable<Data?> = Variable(nil)
   let disposeBag = DisposeBag()
   let adUnitID = ""
