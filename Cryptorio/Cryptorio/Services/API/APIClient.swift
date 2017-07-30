@@ -31,7 +31,13 @@ class APIClient {
       }
     } catch let err {
       performCallback() {
-      
+        guard let fperror = err as? FPError else {
+          let error = FPError.other(err.localizedDescription)
+          callback?(.fail(error))
+          return
+        }
+        
+        callback?(.fail(fperror))
       }
     }
     
